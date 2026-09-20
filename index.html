@@ -1,0 +1,4764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SafeHer - Women's Safety</title>
+
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #fff7fa;
+      color: #222;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 7%;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      color: #d4145a;
+      white-space: nowrap;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      align-items: center;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav ul li a:hover {
+      color: #d4145a;
+    }
+
+    /* LANGUAGE SELECTOR */
+    .language-box {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: #fff0f5;
+      border: 1px solid #f3c8d8;
+      border-radius: 10px;
+      padding: 7px 10px;
+    }
+
+    .language-box span {
+      font-size: 17px;
+    }
+
+    #languageSelect {
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #c20f50;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 650px;
+      padding: 70px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 50px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(212,20,90,0.12), transparent 35%),
+        linear-gradient(135deg, #fff7fa, #ffe9f1);
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #ffe0eb;
+      color: #c20f50;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      color: #202020;
+    }
+
+    .hero h1 span {
+      color: #d4145a;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    /* SOS */
+    .sos-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 330px;
+    }
+
+    .sos-button {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      border: 12px solid #ffd3e2;
+      background: linear-gradient(145deg, #e51b61, #b90d4d);
+      color: white;
+      font-size: 45px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow:
+        0 0 0 20px rgba(212,20,90,0.08),
+        0 25px 50px rgba(212,20,90,0.28);
+      transition: 0.25s;
+    }
+
+    .sos-button:hover {
+      transform: scale(1.04);
+    }
+
+    .sos-button:active {
+      transform: scale(0.96);
+    }
+
+    .sos-caption {
+      text-align: center;
+      margin-top: 18px;
+      color: #777;
+      font-size: 13px;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 75px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #777;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+      border: 1px solid #f3dce5;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: #d4145a;
+    }
+
+    .card p {
+      color: #666;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .emergency-card {
+      border-top: 5px solid #d4145a;
+    }
+
+    .card button,
+    .primary-btn {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-weight: bold;
+      background: #d4145a;
+      color: white;
+    }
+
+    .secondary-btn {
+      background: #fff0f5 !important;
+      color: #c20f50 !important;
+      border: 1px solid #f2bfd0 !important;
+    }
+
+    /* CONTACTS */
+    .contact-form {
+      max-width: 650px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #d4145a;
+    }
+
+    .contact-list {
+      max-width: 850px;
+      margin: 30px auto 0;
+      display: grid;
+      gap: 15px;
+    }
+
+    .contact-item {
+      background: white;
+      padding: 18px;
+      border-radius: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      border: 1px solid #f0d9e2;
+    }
+
+    .contact-info strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .contact-info small {
+      color: #777;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .contact-actions button {
+      border: none;
+      padding: 9px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .call-btn {
+      background: #e8f8ef;
+      color: #168447;
+    }
+
+    .alert-btn {
+      background: #e9f2ff;
+      color: #1769aa;
+    }
+
+    .delete-btn {
+      background: #ffe8ed;
+      color: #c4144f;
+    }
+
+    .primary-badge {
+      display: inline-block;
+      margin-top: 7px;
+      padding: 4px 8px;
+      background: #ffe1ec;
+      color: #c20f50;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    /* LOCATION */
+    .location-box {
+      max-width: 850px;
+      margin: auto;
+      background: #181818;
+      color: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .location-box h3 {
+      margin-bottom: 15px;
+    }
+
+    .location-data {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .location-stat {
+      background: #252525;
+      padding: 18px;
+      border-radius: 12px;
+    }
+
+    .location-stat small {
+      color: #aaa;
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .location-stat strong {
+      font-size: 14px;
+    }
+
+    /* ALERT CENTER */
+    #alertCenter {
+      display: none;
+      max-width: 1000px;
+      margin: 35px auto 0;
+      background: white;
+      border-radius: 22px;
+      padding: 30px;
+      border: 2px solid #ffd1df;
+      box-shadow: 0 15px 45px rgba(212,20,90,0.12);
+    }
+
+    .alert-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .alert-header h3 {
+      color: #d4145a;
+      font-size: 25px;
+    }
+
+    .alert-status {
+      background: #fff0f4;
+      color: #c20f50;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .alert-flow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      gap: 8px;
+    }
+
+    .flow-step {
+      flex: 1;
+      text-align: center;
+      background: #fff7fa;
+      border: 1px solid #f3dce5;
+      padding: 13px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .flow-step.active {
+      background: #d4145a;
+      color: white;
+      border-color: #d4145a;
+    }
+
+    /* ALERT PREVIEW */
+    .preview-box {
+      background: #181818;
+      color: white;
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+
+    .preview-label {
+      font-size: 12px;
+      color: #ffabc7;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    .preview-message {
+      background: white;
+      color: #222;
+      border-radius: 14px;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .preview-message .preview-title {
+      color: #d4145a;
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .preview-line {
+      padding: 7px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 13px;
+    }
+
+    .preview-line:last-child {
+      border-bottom: none;
+    }
+
+    .preview-line strong {
+      color: #333;
+    }
+
+    .alert-contacts {
+      display: grid;
+      gap: 12px;
+    }
+
+    .alert-contact {
+      border: 1px solid #f0d9e2;
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .alert-contact-info strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .alert-contact-info small {
+      color: #777;
+    }
+
+    .alert-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .alert-buttons button {
+      border: none;
+      padding: 10px 13px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    /* DASHBOARD */
+    .dashboard {
+      background: #151515;
+      color: white;
+    }
+
+    .dashboard .section-title p {
+      color: #aaa;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+    }
+
+    .dashboard-card {
+      background: #222;
+      border: 1px solid #333;
+      padding: 25px;
+      border-radius: 17px;
+    }
+
+    .dashboard-card small {
+      color: #aaa;
+    }
+
+    .dashboard-card h3 {
+      font-size: 28px;
+      margin-top: 10px;
+      color: #ff5b91;
+    }
+
+    /* WHY SAFEHER */
+    .why-section {
+      background: white;
+    }
+
+    .why-intro {
+      max-width: 750px;
+      margin: 0 auto 40px;
+      text-align: center;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 20px;
+    }
+
+    .why-card {
+      padding: 25px;
+      border-radius: 18px;
+      background: #fff7fa;
+      border: 1px solid #f3dce5;
+    }
+
+    .why-icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .why-card h3 {
+      margin-bottom: 10px;
+      color: #d4145a;
+    }
+
+    .why-card p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .why-strip {
+      margin-top: 35px;
+      padding: 20px;
+      border-radius: 15px;
+      background: #d4145a;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    /* SAFETY */
+    .tips {
+      max-width: 900px;
+      margin: auto;
+      display: grid;
+      gap: 15px;
+    }
+
+    .tip {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      border-left: 5px solid #d4145a;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .tip strong {
+      color: #d4145a;
+    }
+
+    /* HISTORY */
+    .history-box {
+      max-width: 850px;
+      margin: auto;
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+    }
+
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 14px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 13px;
+    }
+
+    .history-item:last-child {
+      border-bottom: none;
+    }
+
+    .history-time {
+      color: #999;
+      white-space: nowrap;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 30px;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: #ff5b91;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 1100px) {
+      nav ul {
+        gap: 12px;
+      }
+
+      nav ul li a {
+        font-size: 12px;
+      }
+    }
+
+    @media(max-width: 900px) {
+      nav {
+        flex-wrap: wrap;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+
+      .cards,
+      .why-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .dashboard-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+    }
+
+    @media(max-width: 650px) {
+      nav {
+        padding: 14px 5%;
+      }
+
+      section {
+        padding: 55px 5%;
+      }
+
+      .cards,
+      .why-grid,
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 55px 5%;
+      }
+
+      .hero h1 {
+        font-size: 39px;
+      }
+
+      .sos-button {
+        width: 220px;
+        height: 220px;
+        font-size: 38px;
+      }
+
+      .location-data {
+        grid-template-columns: 1fr;
+      }
+
+      .alert-flow {
+        flex-direction: column;
+      }
+
+      .flow-step {
+        width: 100%;
+      }
+
+      .contact-item,
+      .alert-contact {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-actions,
+      .alert-buttons {
+        width: 100%;
+      }
+
+      .language-box {
+        margin-left: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+
+    <div class="logo">SafeHer</div>
+
+    <ul>
+      <li><a href="#home" data-i18n="navHome">Home</a></li>
+      <li><a href="#dashboard" data-i18n="navDashboard">Dashboard</a></li>
+      <li><a href="#why" data-i18n="navWhy">Why SafeHer</a></li>
+      <li><a href="#emergency" data-i18n="navEmergency">Emergency</a></li>
+      <li><a href="#contacts" data-i18n="navContacts">Contacts</a></li>
+      <li><a href="#location" data-i18n="navLocation">Location</a></li>
+      <li><a href="#safety" data-i18n="navSafety">Safety</a></li>
+    </ul>
+
+    <!-- NEW LANGUAGE SELECTOR -->
+    <div class="language-box">
+      <span>🌐</span>
+
+      <select id="languageSelect" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+        <option value="gu">ગુજરાતી</option>
+        <option value="bn">বাংলা</option>
+        <option value="ta">தமிழ்</option>
+        <option value="te">తెలుగు</option>
+        <option value="kn">ಕನ್ನಡ</option>
+        <option value="ml">മലയാളം</option>
+        <option value="pa">ਪੰਜਾਬੀ</option>
+      </select>
+    </div>
+
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+
+    <div class="hero-text">
+
+      <span class="tag" data-i18n="tag">
+        WOMEN'S SAFETY PLATFORM
+      </span>
+
+      <h1>
+        <span data-i18n="heroLine1">Your Safety.</span><br>
+        <span data-i18n="heroLine2">One Tap Away.</span>
+      </h1>
+
+      <p data-i18n="heroDescription">
+        SafeHer brings emergency assistance, trusted contacts,
+        location support and quick help into one simple safety platform.
+      </p>
+
+      <p>
+        <strong data-i18n="heroStrong">
+          Built for the moment when every second matters.
+        </strong>
+      </p>
+
+    </div>
+
+    <div class="sos-area">
+
+      <div>
+
+        <button
+          class="sos-button"
+          onclick="startSOS()"
+        >
+          SOS
+        </button>
+
+        <div class="sos-caption" data-i18n="sosCaption">
+          Press in an emergency
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EMERGENCY -->
+  <section id="emergency">
+
+    <div class="section-title">
+
+      <h2 data-i18n="emergencyTitle">
+        Emergency Assistance
+      </h2>
+
+      <p data-i18n="emergencySubtitle">
+        Quick access to essential emergency services.
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <div class="card emergency-card">
+
+        <h3 data-i18n="policeTitle">
+          🚔 Police
+        </h3>
+
+        <p data-i18n="policeDescription">
+          Direct access to India's emergency response number.
+        </p>
+
+        <button
+          onclick="callNumber('112')"
+          data-i18n="call112"
+        >
+          Call 112
+        </button>
+
+      </div>
+
+
+      <div class="card emergency-card">
+
+        <h3 data-i18n="ambulanceTitle">
+          🚑 Ambulance
+        </h3>
+
+        <p data-i18n="ambulanceDescription">
+          Quickly contact ambulance assistance during a medical emergency.
+        </p>
+
+        <button
+          onclick="callNumber('108')"
+          data-i18n="call108"
+        >
+          Call 108
+        </button>
+
+      </div>
+
+
+      <div class="card emergency-card">
+
+        <h3 data-i18n="nearbyTitle">
+          📍 Nearby Help
+        </h3>
+
+        <p data-i18n="nearbyDescription">
+          Find nearby police stations and hospitals using Maps.
+        </p>
+
+        <button
+          onclick="findNearby('police')"
+          data-i18n="nearbyPolice"
+        >
+          Nearby Police
+        </button>
+
+        <button
+          class="secondary-btn"
+          onclick="findNearby('hospital')"
+          data-i18n="nearbyHospital"
+        >
+          Nearby Hospital
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACTS -->
+  <section id="contacts">
+
+    <div class="section-title">
+
+      <h2 data-i18n="contactsTitle">
+        Trusted Contacts
+      </h2>
+
+      <p data-i18n="contactsSubtitle">
+        Add people you can rely on during an emergency.
+      </p>
+
+    </div>
+
+
+    <div class="contact-form">
+
+      <input
+        type="text"
+        id="contactName"
+        data-placeholder="contactNamePlaceholder"
+        placeholder="Contact name"
+      >
+
+      <input
+        type="tel"
+        id="contactPhone"
+        data-placeholder="contactPhonePlaceholder"
+        placeholder="Phone number"
+      >
+
+      <button
+        class="primary-btn"
+        onclick="addContact()"
+        data-i18n="addContact"
+      >
+        + Add Trusted Contact
+      </button>
+
+    </div>
+
+
+    <div
+      class="contact-list"
+      id="contactList"
+    ></div>
+
+  </section>
+
+
+  <!-- LOCATION -->
+  <section id="location">
+
+    <div class="section-title">
+
+      <h2 data-i18n="locationTitle">
+        Current Location
+      </h2>
+
+      <p data-i18n="locationSubtitle">
+        Get your latest available location and open it in Maps.
+      </p>
+
+    </div>
+
+
+    <div class="location-box">
+
+      <h3 data-i18n="locationStatusTitle">
+        📍 Location Status
+      </h3>
+
+      <p
+        id="locationStatus"
+        data-i18n="locationNotRequested"
+      >
+        Location not requested yet.
+      </p>
+
+
+      <div class="location-data">
+
+        <div class="location-stat">
+
+          <small data-i18n="latitude">
+            Latitude
+          </small>
+
+          <strong id="latitude">—</strong>
+
+        </div>
+
+
+        <div class="location-stat">
+
+          <small data-i18n="longitude">
+            Longitude
+          </small>
+
+          <strong id="longitude">—</strong>
+
+        </div>
+
+
+        <div class="location-stat">
+
+          <small data-i18n="accuracy">
+            Approx. Accuracy
+          </small>
+
+          <strong id="accuracy">—</strong>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="primary-btn"
+        onclick="getLocation()"
+        data-i18n="getLocation"
+      >
+        Get Current Location
+      </button>
+
+
+      <button
+        class="primary-btn"
+        onclick="openCurrentMap()"
+        data-i18n="openMaps"
+      >
+        Open Location in Maps
+      </button>
+
+    </div>
+
+
+    <!-- ALERT CENTER -->
+    <div id="alertCenter">
+
+      <div class="alert-header">
+
+        <div>
+
+          <h3 data-i18n="alertCenterTitle">
+            🚨 Emergency Alert Center
+          </h3>
+
+          <p
+            style="color:#777;margin-top:5px;"
+            data-i18n="alertCenterSubtitle"
+          >
+            Your emergency response flow is ready.
+          </p>
+
+        </div>
+
+        <div
+          class="alert-status"
+          id="alertStatus"
+          data-i18n="sosActive"
+        >
+          SOS ACTIVE
+        </div>
+
+      </div>
+
+
+      <!-- FLOW -->
+      <div class="alert-flow">
+
+        <div
+          class="flow-step active"
+          data-i18n="flowSOS"
+        >
+          🚨 SOS
+        </div>
+
+        <div
+          class="flow-step active"
+          data-i18n="flowLocation"
+        >
+          📍 Location
+        </div>
+
+        <div
+          class="flow-step active"
+          data-i18n="flowContacts"
+        >
+          👤 Contacts
+        </div>
+
+        <div
+          class="flow-step"
+          data-i18n="flowHelp"
+        >
+          🆘 Help
+        </div>
+
+      </div>
+
+
+      <!-- ALERT PREVIEW -->
+      <div class="preview-box">
+
+        <div
+          class="preview-label"
+          data-i18n="alertPreview"
+        >
+          ALERT PREVIEW
+        </div>
+
+
+        <div class="preview-message">
+
+          <div
+            class="preview-title"
+            data-i18n="safeHerEmergency"
+          >
+            🚨 SAFEHER EMERGENCY ALERT
+          </div>
+
+
+          <div class="preview-line">
+
+            <strong data-i18n="statusLabel">
+              Status:
+            </strong>
+
+            <span data-i18n="needsHelp">
+              User needs immediate help.
+            </span>
+
+          </div>
+
+
+          <div class="preview-line">
+
+            <strong data-i18n="locationLabel">
+              📍 Location:
+            </strong>
+
+            <span id="previewLocation">
+              Location will appear here.
+            </span>
+
+          </div>
+
+
+          <div class="preview-line">
+
+            <strong data-i18n="timeLabel">
+              🕒 Time:
+            </strong>
+
+            <span id="previewTime">
+              Current time
+            </span>
+
+          </div>
+
+
+          <div class="preview-line">
+
+            <strong data-i18n="trustedContactLabel">
+              👤 Trusted Contact:
+            </strong>
+
+            <span id="previewContact">
+              No primary contact added.
+            </span>
+
+          </div>
+
+
+          <div class="preview-line">
+
+            <strong data-i18n="emergencyLabel">
+              📞 Emergency:
+            </strong>
+
+            <span data-i18n="call112Instruction">
+              Call 112 if immediate assistance is required.
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <h4
+        style="margin-bottom:15px;"
+        data-i18n="sendAlertTitle"
+      >
+        Send Alert to Trusted Contacts
+      </h4>
+
+
+      <div
+        class="alert-contacts"
+        id="alertContacts"
+      ></div>
+
+
+      <button
+        class="primary-btn"
+        onclick="callNumber('112')"
+        data-i18n="callEmergency112"
+      >
+        📞 Call Emergency Services — 112
+      </button>
+
+
+      <button
+        class="primary-btn secondary-btn"
+        onclick="openCurrentMap()"
+        data-i18n="openCurrentLocation"
+      >
+        📍 Open Current Location
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- DASHBOARD -->
+  <section
+    class="dashboard"
+    id="dashboard"
+  >
+
+    <div class="section-title">
+
+      <h2 data-i18n="dashboardTitle">
+        Safety Dashboard
+      </h2>
+
+      <p data-i18n="dashboardSubtitle">
+        Quick overview of your SafeHer protection setup.
+      </p>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+      <div class="dashboard-card">
+
+        <small data-i18n="dashboardContacts">
+          Emergency Contacts
+        </small>
+
+        <h3 id="dashboardContacts">0</h3>
+
+      </div>
+
+
+      <div class="dashboard-card">
+
+        <small data-i18n="dashboardLocation">
+          Location Status
+        </small>
+
+        <h3 id="dashboardLocation">
+          OFF
+        </h3>
+
+      </div>
+
+
+      <div class="dashboard-card">
+
+        <small data-i18n="dashboardSOS">
+          SOS Status
+        </small>
+
+        <h3 id="dashboardSOS">
+          READY
+        </h3>
+
+      </div>
+
+
+      <div class="dashboard-card">
+
+        <small data-i18n="dashboardActivity">
+          Last Activity
+        </small>
+
+        <h3 id="dashboardActivity">
+          —
+        </h3>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHY SAFEHER -->
+  <section
+    class="why-section"
+    id="why"
+  >
+
+    <div class="section-title">
+
+      <h2 data-i18n="whyTitle">
+        Why SafeHer?
+      </h2>
+
+    </div>
+
+
+    <p
+      class="why-intro"
+      data-i18n="whyIntro"
+    >
+      Emergency situations do not give you time to search, decide or explain.
+      SafeHer brings important safety actions into one simple flow.
+    </p>
+
+
+    <div class="why-grid">
+
+      <div class="why-card">
+
+        <div class="why-icon">
+          🚨
+        </div>
+
+        <h3 data-i18n="whySOS">
+          One-Tap SOS
+        </h3>
+
+        <p data-i18n="whySOSDescription">
+          Activate an emergency response flow with a short cancellation window.
+        </p>
+
+      </div>
+
+
+      <div class="why-card">
+
+        <div class="why-icon">
+          📍
+        </div>
+
+        <h3 data-i18n="whyLocation">
+          Location Ready
+        </h3>
+
+        <p data-i18n="whyLocationDescription">
+          Get the latest available location and open it directly in Maps.
+        </p>
+
+      </div>
+
+
+      <div class="why-card">
+
+        <div class="why-icon">
+          👥
+        </div>
+
+        <h3 data-i18n="whyNetwork">
+          Trusted Network
+        </h3>
+
+        <p data-i18n="whyNetworkDescription">
+          Save important contacts and quickly call or prepare an alert message.
+        </p>
+
+      </div>
+
+
+      <div class="why-card">
+
+        <div class="why-icon">
+          🆘
+        </div>
+
+        <h3 data-i18n="whyNearby">
+          Nearby Assistance
+        </h3>
+
+        <p data-i18n="whyNearbyDescription">
+          Quickly search for nearby police stations and hospitals.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="why-strip"
+      data-i18n="whyStrip"
+    >
+      Built for the moment when every second matters.
+      <br><br>
+      SOS → LOCATION → CONTACT → HELP
+    </div>
+
+  </section>
+
+
+  <!-- HISTORY -->
+  <section>
+
+    <div class="section-title">
+
+      <h2 data-i18n="historyTitle">
+        Emergency Activity
+      </h2>
+
+      <p data-i18n="historySubtitle">
+        Recent actions performed inside SafeHer.
+      </p>
+
+    </div>
+
+
+    <div class="history-box">
+
+      <div id="historyList">
+        No activity yet.
+      </div>
+
+
+      <button
+        class="primary-btn secondary-btn"
+        onclick="clearHistory()"
+        data-i18n="clearActivity"
+      >
+        Clear Activity
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- SAFETY -->
+  <section id="safety">
+
+    <div class="section-title">
+
+      <h2 data-i18n="safetyTitle">
+        Safety Tips
+      </h2>
+
+      <p data-i18n="safetySubtitle">
+        Simple habits can make emergency situations easier to handle.
+      </p>
+
+    </div>
+
+
+    <div class="tips">
+
+      <div class="tip">
+
+        <strong data-i18n="tip1Title">
+          01 — Stay aware
+        </strong>
+
+        <br>
+
+        <span data-i18n="tip1Text">
+          Keep your surroundings in mind, especially when travelling alone.
+        </span>
+
+      </div>
+
+
+      <div class="tip">
+
+        <strong data-i18n="tip2Title">
+          02 — Keep contacts ready
+        </strong>
+
+        <br>
+
+        <span data-i18n="tip2Text">
+          Add people you trust before you actually need emergency assistance.
+        </span>
+
+      </div>
+
+
+      <div class="tip">
+
+        <strong data-i18n="tip3Title">
+          03 — Share your location carefully
+        </strong>
+
+        <br>
+
+        <span data-i18n="tip3Text">
+          Only share your location with trusted people or emergency services.
+        </span>
+
+      </div>
+
+
+      <div class="tip">
+
+        <strong data-i18n="tip4Title">
+          04 — Know emergency numbers
+        </strong>
+
+        <br>
+
+        <span data-i18n="tip4Text">
+          India's emergency response number is 112.
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <strong>SafeHer</strong>
+
+    <span data-i18n="footerText">
+      — Women's Safety Platform
+    </span>
+
+    <br><br>
+
+    <span data-i18n="footerPrototype">
+      Prototype developed for innovation and hackathon demonstration.
+    </span>
+
+  </footer>
+
+
+  <script>
+
+    /* =====================================================
+       LANGUAGE SYSTEM
+    ===================================================== */
+
+    const translations = {
+
+      en: {
+
+        navHome: "Home",
+        navDashboard: "Dashboard",
+        navWhy: "Why SafeHer",
+        navEmergency: "Emergency",
+        navContacts: "Contacts",
+        navLocation: "Location",
+        navSafety: "Safety",
+
+        tag: "WOMEN'S SAFETY PLATFORM",
+        heroLine1: "Your Safety.",
+        heroLine2: "One Tap Away.",
+        heroDescription:
+          "SafeHer brings emergency assistance, trusted contacts, location support and quick help into one simple safety platform.",
+        heroStrong:
+          "Built for the moment when every second matters.",
+        sosCaption:
+          "Press in an emergency",
+
+        emergencyTitle:
+          "Emergency Assistance",
+        emergencySubtitle:
+          "Quick access to essential emergency services.",
+
+        policeTitle:
+          "🚔 Police",
+        policeDescription:
+          "Direct access to India's emergency response number.",
+        call112:
+          "Call 112",
+
+        ambulanceTitle:
+          "🚑 Ambulance",
+        ambulanceDescription:
+          "Quickly contact ambulance assistance during a medical emergency.",
+        call108:
+          "Call 108",
+
+        nearbyTitle:
+          "📍 Nearby Help",
+        nearbyDescription:
+          "Find nearby police stations and hospitals using Maps.",
+        nearbyPolice:
+          "Nearby Police",
+        nearbyHospital:
+          "Nearby Hospital",
+
+        contactsTitle:
+          "Trusted Contacts",
+        contactsSubtitle:
+          "Add people you can rely on during an emergency.",
+        contactNamePlaceholder:
+          "Contact name",
+        contactPhonePlaceholder:
+          "Phone number",
+        addContact:
+          "+ Add Trusted Contact",
+
+        locationTitle:
+          "Current Location",
+        locationSubtitle:
+          "Get your latest available location and open it in Maps.",
+        locationStatusTitle:
+          "📍 Location Status",
+        locationNotRequested:
+          "Location not requested yet.",
+        latitude:
+          "Latitude",
+        longitude:
+          "Longitude",
+        accuracy:
+          "Approx. Accuracy",
+        getLocation:
+          "Get Current Location",
+        openMaps:
+          "Open Location in Maps",
+
+        alertCenterTitle:
+          "🚨 Emergency Alert Center",
+        alertCenterSubtitle:
+          "Your emergency response flow is ready.",
+        sosActive:
+          "SOS ACTIVE",
+
+        flowSOS:
+          "🚨 SOS",
+        flowLocation:
+          "📍 Location",
+        flowContacts:
+          "👤 Contacts",
+        flowHelp:
+          "🆘 Help",
+
+        alertPreview:
+          "ALERT PREVIEW",
+        safeHerEmergency:
+          "🚨 SAFEHER EMERGENCY ALERT",
+        statusLabel:
+          "Status:",
+        needsHelp:
+          "User needs immediate help.",
+        locationLabel:
+          "📍 Location:",
+        timeLabel:
+          "🕒 Time:",
+        trustedContactLabel:
+          "👤 Trusted Contact:",
+        emergencyLabel:
+          "📞 Emergency:",
+        call112Instruction:
+          "Call 112 if immediate assistance is required.",
+        sendAlertTitle:
+          "Send Alert to Trusted Contacts",
+        callEmergency112:
+          "📞 Call Emergency Services — 112",
+        openCurrentLocation:
+          "📍 Open Current Location",
+
+        dashboardTitle:
+          "Safety Dashboard",
+        dashboardSubtitle:
+          "Quick overview of your SafeHer protection setup.",
+        dashboardContacts:
+          "Emergency Contacts",
+        dashboardLocation:
+          "Location Status",
+        dashboardSOS:
+          "SOS Status",
+        dashboardActivity:
+          "Last Activity",
+
+        whyTitle:
+          "Why SafeHer?",
+        whyIntro:
+          "Emergency situations do not give you time to search, decide or explain. SafeHer brings important safety actions into one simple flow.",
+        whySOS:
+          "One-Tap SOS",
+        whySOSDescription:
+          "Activate an emergency response flow with a short cancellation window.",
+        whyLocation:
+          "Location Ready",
+        whyLocationDescription:
+          "Get the latest available location and open it directly in Maps.",
+        whyNetwork:
+          "Trusted Network",
+        whyNetworkDescription:
+          "Save important contacts and quickly call or prepare an alert message.",
+        whyNearby:
+          "Nearby Assistance",
+        whyNearbyDescription:
+          "Quickly search for nearby police stations and hospitals.",
+        whyStrip:
+          "Built for the moment when every second matters.<br><br>SOS → LOCATION → CONTACT → HELP",
+
+        historyTitle:
+          "Emergency Activity",
+        historySubtitle:
+          "Recent actions performed inside SafeHer.",
+        clearActivity:
+          "Clear Activity",
+
+        safetyTitle:
+          "Safety Tips",
+        safetySubtitle:
+          "Simple habits can make emergency situations easier to handle.",
+
+        tip1Title:
+          "01 — Stay aware",
+        tip1Text:
+          "Keep your surroundings in mind, especially when travelling alone.",
+
+        tip2Title:
+          "02 — Keep contacts ready",
+        tip2Text:
+          "Add people you trust before you actually need emergency assistance.",
+
+        tip3Title:
+          "03 — Share your location carefully",
+        tip3Text:
+          "Only share your location with trusted people or emergency services.",
+
+        tip4Title:
+          "04 — Know emergency numbers",
+        tip4Text:
+          "India's emergency response number is 112.",
+
+        footerText:
+          "— Women's Safety Platform",
+        footerPrototype:
+          "Prototype developed for innovation and hackathon demonstration."
+      },
+
+
+      hi: {
+
+        navHome: "होम",
+        navDashboard: "डैशबोर्ड",
+        navWhy: "SafeHer क्यों?",
+        navEmergency: "आपातकाल",
+        navContacts: "संपर्क",
+        navLocation: "स्थान",
+        navSafety: "सुरक्षा",
+
+        tag: "महिला सुरक्षा प्लेटफॉर्म",
+        heroLine1: "आपकी सुरक्षा।",
+        heroLine2: "बस एक टैप दूर।",
+        heroDescription:
+          "SafeHer आपातकालीन सहायता, विश्वसनीय संपर्क, लोकेशन सपोर्ट और त्वरित मदद को एक ही सुरक्षा प्लेटफॉर्म में लाता है।",
+        heroStrong:
+          "उस समय के लिए बनाया गया है जब हर सेकंड महत्वपूर्ण होता है।",
+        sosCaption:
+          "आपातकाल में दबाएं",
+
+        emergencyTitle:
+          "आपातकालीन सहायता",
+        emergencySubtitle:
+          "जरूरी आपातकालीन सेवाओं तक तुरंत पहुंच।",
+
+        policeTitle:
+          "🚔 पुलिस",
+        policeDescription:
+          "भारत की आपातकालीन प्रतिक्रिया सेवा तक सीधी पहुंच।",
+        call112:
+          "112 पर कॉल करें",
+
+        ambulanceTitle:
+          "🚑 एम्बुलेंस",
+        ambulanceDescription:
+          "चिकित्सकीय आपातकाल में एम्बुलेंस सहायता से तुरंत संपर्क करें।",
+        call108:
+          "108 पर कॉल करें",
+
+        nearbyTitle:
+          "📍 नजदीकी सहायता",
+        nearbyDescription:
+          "Maps की मदद से नजदीकी पुलिस स्टेशन और अस्पताल खोजें।",
+        nearbyPolice:
+          "नजदीकी पुलिस",
+        nearbyHospital:
+          "नजदीकी अस्पताल",
+
+        contactsTitle:
+          "विश्वसनीय संपर्क",
+        contactsSubtitle:
+          "आपातकाल में भरोसा करने वाले लोगों को जोड़ें।",
+        contactNamePlaceholder:
+          "संपर्क का नाम",
+        contactPhonePlaceholder:
+          "फोन नंबर",
+        addContact:
+          "+ विश्वसनीय संपर्क जोड़ें",
+
+        locationTitle:
+          "वर्तमान स्थान",
+        locationSubtitle:
+          "अपना नवीनतम उपलब्ध स्थान प्राप्त करें और Maps में खोलें।",
+        locationStatusTitle:
+          "📍 स्थान की स्थिति",
+        locationNotRequested:
+          "अभी स्थान की जानकारी नहीं मांगी गई है।",
+        latitude:
+          "अक्षांश",
+        longitude:
+          "देशांतर",
+        accuracy:
+          "लगभग सटीकता",
+        getLocation:
+          "वर्तमान स्थान प्राप्त करें",
+        openMaps:
+          "स्थान को Maps में खोलें",
+
+        alertCenterTitle:
+          "🚨 आपातकालीन अलर्ट सेंटर",
+        alertCenterSubtitle:
+          "आपकी आपातकालीन प्रतिक्रिया प्रक्रिया तैयार है।",
+        sosActive:
+          "SOS सक्रिय",
+
+        flowSOS:
+          "🚨 SOS",
+        flowLocation:
+          "📍 स्थान",
+        flowContacts:
+          "👤 संपर्क",
+        flowHelp:
+          "🆘 मदद",
+
+        alertPreview:
+          "अलर्ट प्रीव्यू",
+        safeHerEmergency:
+          "🚨 SAFEHER आपातकालीन अलर्ट",
+        statusLabel:
+          "स्थिति:",
+        needsHelp:
+          "उपयोगकर्ता को तुरंत मदद की आवश्यकता है।",
+        locationLabel:
+          "📍 स्थान:",
+        timeLabel:
+          "🕒 समय:",
+        trustedContactLabel:
+          "👤 विश्वसनीय संपर्क:",
+        emergencyLabel:
+          "📞 आपातकाल:",
+        call112Instruction:
+          "तुरंत सहायता की आवश्यकता होने पर 112 पर कॉल करें।",
+        sendAlertTitle:
+          "विश्वसनीय संपर्कों को अलर्ट भेजें",
+        callEmergency112:
+          "📞 आपातकालीन सेवा — 112",
+        openCurrentLocation:
+          "📍 वर्तमान स्थान खोलें",
+
+        dashboardTitle:
+          "सुरक्षा डैशबोर्ड",
+        dashboardSubtitle:
+          "आपकी SafeHer सुरक्षा व्यवस्था का त्वरित विवरण।",
+        dashboardContacts:
+          "आपातकालीन संपर्क",
+        dashboardLocation:
+          "स्थान की स्थिति",
+        dashboardSOS:
+          "SOS स्थिति",
+        dashboardActivity:
+          "अंतिम गतिविधि",
+
+        whyTitle:
+          "SafeHer क्यों?",
+        whyIntro:
+          "आपातकालीन स्थिति में खोजने, सोचने या समझाने का समय नहीं मिलता। SafeHer जरूरी सुरक्षा कार्यों को एक सरल प्रक्रिया में लाता है।",
+        whySOS:
+          "वन-टैप SOS",
+        whySOSDescription:
+          "छोटी cancellation window के साथ आपातकालीन प्रतिक्रिया शुरू करें।",
+        whyLocation:
+          "लोकेशन तैयार",
+        whyLocationDescription:
+          "नवीनतम उपलब्ध लोकेशन प्राप्त करें और इसे सीधे Maps में खोलें।",
+        whyNetwork:
+          "विश्वसनीय नेटवर्क",
+        whyNetworkDescription:
+          "महत्वपूर्ण संपर्क सेव करें और तुरंत कॉल या अलर्ट संदेश तैयार करें।",
+        whyNearby:
+          "नजदीकी सहायता",
+        whyNearbyDescription:
+          "नजदीकी पुलिस स्टेशन और अस्पताल जल्दी खोजें।",
+        whyStrip:
+          "उस समय के लिए बनाया गया है जब हर सेकंड महत्वपूर्ण होता है।<br><br>SOS → स्थान → संपर्क → मदद",
+
+        historyTitle:
+          "आपातकालीन गतिविधि",
+        historySubtitle:
+          "SafeHer में की गई हाल की गतिविधियां।",
+        clearActivity:
+          "गतिविधि साफ करें",
+
+        safetyTitle:
+          "सुरक्षा सुझाव",
+        safetySubtitle:
+          "कुछ आसान आदतें आपातकालीन स्थिति को संभालने में मदद कर सकती हैं।",
+
+        tip1Title:
+          "01 — सतर्क रहें",
+        tip1Text:
+          "खासकर अकेले यात्रा करते समय अपने आसपास की स्थिति पर ध्यान रखें।",
+
+        tip2Title:
+          "02 — संपर्क तैयार रखें",
+        tip2Text:
+          "आपातकाल आने से पहले भरोसेमंद लोगों को संपर्क सूची में जोड़ें।",
+
+        tip3Title:
+          "03 — लोकेशन सावधानी से साझा करें",
+        tip3Text:
+          "अपनी लोकेशन केवल भरोसेमंद लोगों या आपातकालीन सेवाओं के साथ साझा करें।",
+
+        tip4Title:
+          "04 — आपातकालीन नंबर जानें",
+        tip4Text:
+          "भारत का आपातकालीन प्रतिक्रिया नंबर 112 है।",
+
+        footerText:
+          "— महिला सुरक्षा प्लेटफॉर्म",
+        footerPrototype:
+          "इनोवेशन और हैकाथॉन प्रदर्शन के लिए बनाया गया प्रोटोटाइप।"
+      },
+
+
+      mr: {
+
+        navHome: "होम",
+        navDashboard: "डॅशबोर्ड",
+        navWhy: "SafeHer का?",
+        navEmergency: "आणीबाणी",
+        navContacts: "संपर्क",
+        navLocation: "स्थान",
+        navSafety: "सुरक्षा",
+
+        tag: "महिला सुरक्षा प्लॅटफॉर्म",
+        heroLine1: "तुमची सुरक्षा.",
+        heroLine2: "फक्त एका टॅपवर.",
+        heroDescription:
+          "SafeHer आपत्कालीन मदत, विश्वासू संपर्क, स्थान सहाय्य आणि जलद मदत एका सुरक्षा प्लॅटफॉर्ममध्ये आणते.",
+        heroStrong:
+          "प्रत्येक सेकंद महत्त्वाचा असतो त्या क्षणासाठी तयार केलेले.",
+        sosCaption:
+          "आणीबाणीच्या वेळी दाबा",
+
+        emergencyTitle:
+          "आपत्कालीन मदत",
+        emergencySubtitle:
+          "महत्त्वाच्या आपत्कालीन सेवांपर्यंत जलद पोहोच.",
+
+        policeTitle:
+          "🚔 पोलीस",
+        policeDescription:
+          "भारताच्या आपत्कालीन प्रतिसाद क्रमांकापर्यंत थेट पोहोच.",
+        call112:
+          "112 वर कॉल करा",
+
+        ambulanceTitle:
+          "🚑 रुग्णवाहिका",
+        ambulanceDescription:
+          "वैद्यकीय आणीबाणीमध्ये रुग्णवाहिका सेवेशी त्वरित संपर्क करा.",
+        call108:
+          "108 वर कॉल करा",
+
+        nearbyTitle:
+          "📍 जवळची मदत",
+        nearbyDescription:
+          "Maps वापरून जवळचे पोलीस स्टेशन आणि रुग्णालय शोधा.",
+        nearbyPolice:
+          "जवळचे पोलीस",
+        nearbyHospital:
+          "जवळचे रुग्णालय",
+
+        contactsTitle:
+          "विश्वासू संपर्क",
+        contactsSubtitle:
+          "आणीबाणीच्या वेळी विश्वास ठेवता येतील अशा व्यक्तींना जोडा.",
+        contactNamePlaceholder:
+          "संपर्काचे नाव",
+        contactPhonePlaceholder:
+          "फोन नंबर",
+        addContact:
+          "+ विश्वासू संपर्क जोडा",
+
+        locationTitle:
+          "सध्याचे स्थान",
+        locationSubtitle:
+          "तुमचे उपलब्ध नवीनतम स्थान मिळवा आणि Maps मध्ये उघडा.",
+        locationStatusTitle:
+          "📍 स्थानाची स्थिती",
+        locationNotRequested:
+          "अद्याप स्थानाची विनंती केलेली नाही.",
+        latitude:
+          "अक्षांश",
+        longitude:
+          "रेखांश",
+        accuracy:
+          "अंदाजे अचूकता",
+        getLocation:
+          "सध्याचे स्थान मिळवा",
+        openMaps:
+          "स्थान Maps मध्ये उघडा",
+
+        alertCenterTitle:
+          "🚨 आपत्कालीन अलर्ट सेंटर",
+        alertCenterSubtitle:
+          "तुमची आपत्कालीन प्रतिक्रिया प्रक्रिया तयार आहे.",
+        sosActive:
+          "SOS सक्रिय",
+
+        flowSOS:
+          "🚨 SOS",
+        flowLocation:
+          "📍 स्थान",
+        flowContacts:
+          "👤 संपर्क",
+        flowHelp:
+          "🆘 मदत",
+
+        alertPreview:
+          "अलर्ट पूर्वदृश्य",
+        safeHerEmergency:
+          "🚨 SAFEHER आपत्कालीन अलर्ट",
+        statusLabel:
+          "स्थिती:",
+        needsHelp:
+          "वापरकर्त्याला त्वरित मदतीची गरज आहे.",
+        locationLabel:
+          "📍 स्थान:",
+        timeLabel:
+          "🕒 वेळ:",
+        trustedContactLabel:
+          "👤 विश्वासू संपर्क:",
+        emergencyLabel:
+          "📞 आणीबाणी:",
+        call112Instruction:
+          "त्वरित मदतीची आवश्यकता असल्यास 112 वर कॉल करा.",
+        sendAlertTitle:
+          "विश्वासू संपर्कांना अलर्ट पाठवा",
+        callEmergency112:
+          "📞 आपत्कालीन सेवा — 112",
+        openCurrentLocation:
+          "📍 सध्याचे स्थान उघडा",
+
+        dashboardTitle:
+          "सुरक्षा डॅशबोर्ड",
+        dashboardSubtitle:
+          "तुमच्या SafeHer सुरक्षा व्यवस्थेचा जलद आढावा.",
+        dashboardContacts:
+          "आपत्कालीन संपर्क",
+        dashboardLocation:
+          "स्थान स्थिती",
+        dashboardSOS:
+          "SOS स्थिती",
+        dashboardActivity:
+          "शेवटची क्रिया",
+
+        whyTitle:
+          "SafeHer का?",
+        whyIntro:
+          "आणीबाणीच्या परिस्थितीत शोधण्यासाठी, निर्णय घेण्यासाठी किंवा समजावण्यासाठी वेळ मिळत नाही. SafeHer महत्त्वाच्या सुरक्षा कृती एका सोप्या प्रक्रियेत आणते.",
+        whySOS:
+          "वन-टॅप SOS",
+        whySOSDescription:
+          "लहान cancellation window सह आपत्कालीन प्रतिक्रिया सुरू करा.",
+        whyLocation:
+          "स्थान तयार",
+        whyLocationDescription:
+          "नवीनतम उपलब्ध स्थान मिळवा आणि ते थेट Maps मध्ये उघडा.",
+        whyNetwork:
+          "विश्वासू नेटवर्क",
+        whyNetworkDescription:
+          "महत्त्वाचे संपर्क सेव्ह करा आणि पटकन कॉल किंवा अलर्ट संदेश तयार करा.",
+        whyNearby:
+          "जवळची मदत",
+        whyNearbyDescription:
+          "जवळचे पोलीस स्टेशन आणि रुग्णालय पटकन शोधा.",
+        whyStrip:
+          "प्रत्येक सेकंद महत्त्वाचा असतो त्या क्षणासाठी तयार केलेले.<br><br>SOS → स्थान → संपर्क → मदत",
+
+        historyTitle:
+          "आपत्कालीन क्रिया",
+        historySubtitle:
+          "SafeHer मध्ये केलेल्या अलीकडील क्रिया.",
+        clearActivity:
+          "क्रिया साफ करा",
+
+        safetyTitle:
+          "सुरक्षा सूचना",
+        safetySubtitle:
+          "काही सोप्या सवयी आपत्कालीन परिस्थिती हाताळण्यास मदत करू शकतात.",
+
+        tip1Title:
+          "01 — सतर्क रहा",
+        tip1Text:
+          "विशेषतः एकट्याने प्रवास करताना आजूबाजूच्या परिस्थितीकडे लक्ष द्या.",
+
+        tip2Title:
+          "02 — संपर्क तयार ठेवा",
+        tip2Text:
+          "आणीबाणी येण्यापूर्वी विश्वासू व्यक्तींना संपर्कांमध्ये जोडा.",
+
+        tip3Title:
+          "03 — स्थान काळजीपूर्वक शेअर करा",
+        tip3Text:
+          "तुमचे स्थान फक्त विश्वासू व्यक्ती किंवा आपत्कालीन सेवांसोबत शेअर करा.",
+
+        tip4Title:
+          "04 — आपत्कालीन क्रमांक जाणून घ्या",
+        tip4Text:
+          "भारताचा आपत्कालीन प्रतिसाद क्रमांक 112 आहे.",
+
+        footerText:
+          "— महिला सुरक्षा प्लॅटफॉर्म",
+        footerPrototype:
+          "इनोव्हेशन आणि हॅकाथॉन प्रदर्शनासाठी तयार केलेले प्रोटोटाइप."
+      },
+
+
+      gu: {
+
+        navHome: "હોમ",
+        navDashboard: "ડેશબોર્ડ",
+        navWhy: "SafeHer શા માટે?",
+        navEmergency: "કટોકટી",
+        navContacts: "સંપર્ક",
+        navLocation: "સ્થાન",
+        navSafety: "સુરક્ષા",
+
+        tag: "મહિલા સુરક્ષા પ્લેટફોર્મ",
+        heroLine1: "તમારી સુરક્ષા.",
+        heroLine2: "ફક્ત એક ટેપ દૂર.",
+        heroDescription:
+          "SafeHer કટોકટી સહાય, વિશ્વસનીય સંપર્કો, સ્થાન સહાય અને ઝડપી મદદને એક સરળ સુરક્ષા પ્લેટફોર્મમાં લાવે છે.",
+        heroStrong:
+          "દરેક સેકન્ડ મહત્વપૂર્ણ હોય તે ક્ષણ માટે બનાવવામાં આવ્યું છે.",
+        sosCaption:
+          "કટોકટીમાં દબાવો",
+
+        emergencyTitle:
+          "કટોકટી સહાય",
+        emergencySubtitle:
+          "મહત્વપૂર્ણ કટોકટી સેવાઓ સુધી ઝડપી પહોંચ.",
+
+        policeTitle:
+          "🚔 પોલીસ",
+        policeDescription:
+          "ભારતના કટોકટી પ્રતિસાદ નંબર સુધી સીધી પહોંચ.",
+        call112:
+          "112 પર કૉલ કરો",
+
+        ambulanceTitle:
+          "🚑 એમ્બ્યુલન્સ",
+        ambulanceDescription:
+          "તબીબી કટોકટી દરમિયાન એમ્બ્યુલન્સ સહાયનો ઝડપથી સંપર્ક કરો.",
+        call108:
+          "108 પર કૉલ કરો",
+
+        nearbyTitle:
+          "📍 નજીકની મદદ",
+        nearbyDescription:
+          "Maps નો ઉપયોગ કરીને નજીકના પોલીસ સ્ટેશન અને હોસ્પિટલ શોધો.",
+        nearbyPolice:
+          "નજીકની પોલીસ",
+        nearbyHospital:
+          "નજીકની હોસ્પિટલ",
+
+        contactsTitle:
+          "વિશ્વસનીય સંપર્કો",
+        contactsSubtitle:
+          "કટોકટી દરમિયાન વિશ્વાસ કરી શકાય તેવા લોકોને ઉમેરો.",
+        contactNamePlaceholder:
+          "સંપર્કનું નામ",
+        contactPhonePlaceholder:
+          "ફોન નંબર",
+        addContact:
+          "+ વિશ્વસનીય સંપર્ક ઉમેરો",
+
+        locationTitle:
+          "વર્તમાન સ્થાન",
+        locationSubtitle:
+          "તમારું નવીનતમ ઉપલબ્ધ સ્થાન મેળવો અને Maps માં ખોલો.",
+        locationStatusTitle:
+          "📍 સ્થાનની સ્થિતિ",
+        locationNotRequested:
+          "હજુ સુધી સ્થાનની વિનંતી કરવામાં આવી નથી.",
+        latitude:
+          "અક્ષાંશ",
+        longitude:
+          "રેખાંશ",
+        accuracy:
+          "અંદાજિત ચોકસાઈ",
+        getLocation:
+          "વર્તમાન સ્થાન મેળવો",
+        openMaps:
+          "Maps માં સ્થાન ખોલો",
+
+        alertCenterTitle:
+          "🚨 કટોકટી અલર્ટ સેન્ટર",
+        alertCenterSubtitle:
+          "તમારી કટોકટી પ્રતિસાદ પ્રક્રિયા તૈયાર છે.",
+        sosActive:
+          "SOS સક્રિય",
+
+        flowSOS:
+          "🚨 SOS",
+        flowLocation:
+          "📍 સ્થાન",
+        flowContacts:
+          "👤 સંપર્કો",
+        flowHelp:
+          "🆘 મદદ",
+
+        alertPreview:
+          "અલર્ટ પ્રિવ્યૂ",
+        safeHerEmergency:
+          "🚨 SAFEHER કટોકટી અલર્ટ",
+        statusLabel:
+          "સ્થિતિ:",
+        needsHelp:
+          "વપરાશકર્તાને તાત્કાલિક મદદની જરૂર છે.",
+        locationLabel:
+          "📍 સ્થાન:",
+        timeLabel:
+          "🕒 સમય:",
+        trustedContactLabel:
+          "👤 વિશ્વસનીય સંપર્ક:",
+        emergencyLabel:
+          "📞 કટોકટી:",
+        call112Instruction:
+          "તાત્કાલિક મદદની જરૂર હોય તો 112 પર કૉલ કરો.",
+        sendAlertTitle:
+          "વિશ્વસનીય સંપર્કોને અલર્ટ મોકલો",
+        callEmergency112:
+          "📞 કટોકટી સેવા — 112",
+        openCurrentLocation:
+          "📍 વર્તમાન સ્થાન ખોલો",
+
+        dashboardTitle:
+          "સુરક્ષા ડેશબોર્ડ",
+        dashboardSubtitle:
+          "તમારી SafeHer સુરક્ષા વ્યવસ્થાનો ઝડપી આલેખ.",
+        dashboardContacts:
+          "કટોકટી સંપર્કો",
+        dashboardLocation:
+          "સ્થાનની સ્થિતિ",
+        dashboardSOS:
+          "SOS સ્થિતિ",
+        dashboardActivity:
+          "છેલ્લી પ્રવૃત્તિ",
+
+        whyTitle:
+          "SafeHer શા માટે?",
+        whyIntro:
+          "કટોકટીની સ્થિતિમાં શોધવા, નિર્ણય લેવા અથવા સમજાવવા માટે સમય મળતો નથી. SafeHer મહત્વપૂર્ણ સુરક્ષા કાર્યોને એક સરળ પ્રક્રિયામાં લાવે છે.",
+        whySOS:
+          "વન-ટેપ SOS",
+        whySOSDescription:
+          "ટૂંકી cancellation window સાથે કટોકટી પ્રતિસાદ સક્રિય કરો.",
+        whyLocation:
+          "સ્થાન તૈયાર",
+        whyLocationDescription:
+          "નવીનતમ ઉપલબ્ધ સ્થાન મેળવો અને તેને સીધું Maps માં ખોલો.",
+        whyNetwork:
+          "વિશ્વસનીય નેટવર્ક",
+        whyNetworkDescription:
+          "મહત્વપૂર્ણ સંપર્કો સાચવો અને ઝડપથી કૉલ અથવા અલર્ટ સંદેશ તૈયાર કરો.",
+        whyNearby:
+          "નજીકની મદદ",
+        whyNearbyDescription:
+          "નજીકના પોલીસ સ્ટેશન અને હોસ્પિટલ ઝડપથી શોધો.",
+        whyStrip:
+          "દરેક સેકન્ડ મહત્વપૂર્ણ હોય તે ક્ષણ માટે બનાવવામાં આવ્યું છે.<br><br>SOS → સ્થાન → સંપર્ક → મદદ",
+
+        historyTitle:
+          "કટોકટી પ્રવૃત્તિ",
+        historySubtitle:
+          "SafeHer માં કરવામાં આવેલી તાજેતરની પ્રવૃત્તિઓ.",
+        clearActivity:
+          "પ્રવૃત્તિ સાફ કરો",
+
+        safetyTitle:
+          "સુરક્ષા સૂચનો",
+        safetySubtitle:
+          "સરળ આદતો કટોકટીની સ્થિતિને સંભાળવામાં મદદ કરી શકે છે.",
+
+        tip1Title:
+          "01 — સજાગ રહો",
+        tip1Text:
+          "ખાસ કરીને એકલા મુસાફરી કરતી વખતે આસપાસની પરિસ્થિતિનું ધ્યાન રાખો.",
+
+        tip2Title:
+          "02 — સંપર્કો તૈયાર રાખો",
+        tip2Text:
+          "કટોકટી પહેલાં વિશ્વાસુ લોકોને સંપર્કોમાં ઉમેરો.",
+
+        tip3Title:
+          "03 — સ્થાન કાળજીપૂર્વક શેર કરો",
+        tip3Text:
+          "તમારું સ્થાન માત્ર વિશ્વાસુ લોકો અથવા કટોકટી સેવાઓ સાથે શેર કરો.",
+
+        tip4Title:
+          "04 — કટોકટી નંબર જાણો",
+        tip4Text:
+          "ભારતનો કટોકટી પ્રતિસાદ નંબર 112 છે.",
+
+        footerText:
+          "— મહિલા સુરક્ષા પ્લેટફોર્મ",
+        footerPrototype:
+          "ઇનોવેશન અને હેકાથોન પ્રદર્શન માટે બનાવવામાં આવેલ પ્રોટોટાઇપ."
+      },
+
+
+      bn: {
+
+        navHome: "হোম",
+        navDashboard: "ড্যাশবোর্ড",
+        navWhy: "SafeHer কেন?",
+        navEmergency: "জরুরি",
+        navContacts: "যোগাযোগ",
+        navLocation: "অবস্থান",
+        navSafety: "নিরাপত্তা",
+
+        tag: "নারী নিরাপত্তা প্ল্যাটফর্ম",
+        heroLine1: "আপনার নিরাপত্তা।",
+        heroLine2: "একটি ট্যাপ দূরে।",
+        heroDescription:
+          "SafeHer জরুরি সহায়তা, বিশ্বস্ত যোগাযোগ, অবস্থান সহায়তা এবং দ্রুত সাহায্যকে একটি সহজ নিরাপত্তা প্ল্যাটফর্মে নিয়ে আসে।",
+        heroStrong:
+          "যে মুহূর্তে প্রতিটি সেকেন্ড গুরুত্বপূর্ণ, সেই সময়ের জন্য তৈরি।",
+        sosCaption:
+          "জরুরি অবস্থায় চাপুন",
+
+        emergencyTitle:
+          "জরুরি সহায়তা",
+        emergencySubtitle:
+          "প্রয়োজনীয় জরুরি পরিষেবায় দ্রুত প্রবেশাধিকার।",
+
+        policeTitle:
+          "🚔 পুলিশ",
+        policeDescription:
+          "ভারতের জরুরি প্রতিক্রিয়া নম্বরে সরাসরি প্রবেশাধিকার।",
+        call112:
+          "112 কল করুন",
+
+        ambulanceTitle:
+          "🚑 অ্যাম্বুলেন্স",
+        ambulanceDescription:
+          "চিকিৎসা জরুরি অবস্থায় দ্রুত অ্যাম্বুলেন্স সহায়তার সঙ্গে যোগাযোগ করুন।",
+        call108:
+          "108 কল করুন",
+
+        nearbyTitle:
+          "📍 কাছাকাছি সাহায্য",
+        nearbyDescription:
+          "Maps ব্যবহার করে কাছাকাছি পুলিশ স্টেশন এবং হাসপাতাল খুঁজুন।",
+        nearbyPolice:
+          "কাছাকাছি পুলিশ",
+        nearbyHospital:
+          "কাছাকাছি হাসপাতাল",
+
+        contactsTitle:
+          "বিশ্বস্ত যোগাযোগ",
+        contactsSubtitle:
+          "জরুরি অবস্থায় যাদের উপর নির্ভর করতে পারেন তাদের যোগ করুন।",
+        contactNamePlaceholder:
+          "যোগাযোগের নাম",
+        contactPhonePlaceholder:
+          "ফোন নম্বর",
+        addContact:
+          "+ বিশ্বস্ত যোগাযোগ যোগ করুন",
+
+        locationTitle:
+          "বর্তমান অবস্থান",
+        locationSubtitle:
+          "আপনার সর্বশেষ উপলব্ধ অবস্থান পান এবং Maps-এ খুলুন।",
+        locationStatusTitle:
+          "📍 অবস্থানের অবস্থা",
+        locationNotRequested:
+          "এখনও অবস্থানের অনুরোধ করা হয়নি।",
+        latitude:
+          "অক্ষাংশ",
+        longitude:
+          "দ্রাঘিমাংশ",
+        accuracy:
+          "আনুমানিক নির্ভুলতা",
+        getLocation:
+          "বর্তমান অবস্থান পান",
+        openMaps:
+          "Maps-এ অবস্থান খুলুন",
+
+        alertCenterTitle:
+          "🚨 জরুরি সতর্কতা কেন্দ্র",
+        alertCenterSubtitle:
+          "আপনার জরুরি প্রতিক্রিয়া ব্যবস্থা প্রস্তুত।",
+        sosActive:
+          "SOS সক্রিয়",
+
+        flowSOS:
+          "🚨 SOS",
+        flowLocation:
+          "📍 অবস্থান",
+        flowContacts:
+          "👤 যোগাযোগ",
+        flowHelp:
+          "🆘 সাহায্য",
+
+        alertPreview:
+          "সতর্কতা প্রিভিউ",
+        safeHerEmergency:
+          "🚨 SAFEHER জরুরি সতর্কতা",
+        statusLabel:
+          "অবস্থা:",
+        needsHelp:
+          "ব্যবহারকারীর অবিলম্বে সাহায্য প্রয়োজন।",
+        locationLabel:
+          "📍 অবস্থান:",
+        timeLabel:
+          "🕒 সময়:",
+        trustedContactLabel:
+          "👤 বিশ্বস্ত যোগাযোগ:",
+        emergencyLabel:
+          "📞 জরুরি:",
+        call112Instruction:
+          "তাৎক্ষণিক সাহায্যের প্রয়োজন হলে 112 কল করুন।",
+        sendAlertTitle:
+          "বিশ্বস্ত যোগাযোগকে সতর্কতা পাঠান",
+        callEmergency112:
+          "📞 জরুরি পরিষেবা — 112",
+        openCurrentLocation:
+          "📍 বর্তমান অবস্থান খুলুন",
+
+        dashboardTitle:
+          "নিরাপত্তা ড্যাশবোর্ড",
+        dashboardSubtitle:
+          "আপনার SafeHer নিরাপত্তা ব্যবস্থার দ্রুত পর্যালোচনা।",
+        dashboardContacts:
+          "জরুরি যোগাযোগ",
+        dashboardLocation:
+          "অবস্থানের অবস্থা",
+        dashboardSOS:
+          "SOS অবস্থা",
+        dashboardActivity:
+          "শেষ কার্যকলাপ",
+
+        whyTitle:
+          "SafeHer কেন?",
+        whyIntro:
+          "জরুরি পরিস্থিতিতে খোঁজা, সিদ্ধান্ত নেওয়া বা ব্যাখ্যা করার সময় থাকে না। SafeHer গুরুত্বপূর্ণ নিরাপত্তা কাজগুলোকে একটি সহজ প্রক্রিয়ায় আনে।",
+        whySOS:
+          "ওয়ান-ট্যাপ SOS",
+        whySOSDescription:
+          "একটি ছোট cancellation window সহ জরুরি প্রতিক্রিয়া সক্রিয় করুন।",
+        whyLocation:
+          "অবস্থান প্রস্তুত",
+        whyLocationDescription:
+          "সর্বশেষ উপলব্ধ অবস্থান পান এবং সরাসরি Maps-এ খুলুন।",
+        whyNetwork:
+          "বিশ্বস্ত নেটওয়ার্ক",
+        whyNetworkDescription:
+          "গুরুত্বপূর্ণ যোগাযোগ সংরক্ষণ করুন এবং দ্রুত কল বা সতর্কতা বার্তা প্রস্তুত করুন।",
+        whyNearby:
+          "কাছাকাছি সহায়তা",
+        whyNearbyDescription:
+          "কাছাকাছি পুলিশ স্টেশন এবং হাসপাতাল দ্রুত খুঁজুন।",
+        whyStrip:
+          "যে মুহূর্তে প্রতিটি সেকেন্ড গুরুত্বপূর্ণ, সেই সময়ের জন্য তৈরি।<br><br>SOS → অবস্থান → যোগাযোগ → সাহায্য",
+
+        historyTitle:
+          "জরুরি কার্যকলাপ",
+        historySubtitle:
+          "SafeHer-এ সাম্প্রতিক কার্যকলাপ।",
+        clearActivity:
+          "কার্যকলাপ মুছুন",
+
+        safetyTitle:
+          "নিরাপত্তা টিপস",
+        safetySubtitle:
+          "সহজ অভ্যাস জরুরি পরিস্থিতি সামলাতে সাহায্য করতে পারে।",
+
+        tip1Title:
+          "01 — সচেতন থাকুন",
+        tip1Text:
+          "বিশেষ করে একা ভ্রমণের সময় আশেপাশের পরিস্থিতির দিকে নজর রাখুন.",
+
+        tip2Title:
+          "02 — যোগাযোগ প্রস্তুত রাখুন",
+        tip2Text:
+          "জরুরি অবস্থার আগে বিশ্বস্ত ব্যক্তিদের যোগাযোগ তালিকায় যোগ করুন।",
+
+        tip3Title:
+          "03 — অবস্থান সাবধানে শেয়ার করুন",
+        tip3Text:
+          "শুধুমাত্র বিশ্বস্ত ব্যক্তি বা জরুরি পরিষেবার সঙ্গে অবস্থান শেয়ার করুন।",
+
+        tip4Title:
+          "04 — জরুরি নম্বর জানুন",
+        tip4Text:
+          "ভারতের জরুরি প্রতিক্রিয়া নম্বর 112।",
+
+        footerText:
+          "— নারী নিরাপত্তা প্ল্যাটফর্ম",
+        footerPrototype:
+          "ইনোভেশন এবং হ্যাকাথন প্রদর্শনের জন্য তৈরি প্রোটোটাইপ।"
+      },
+
+
+      ta: {
+
+        navHome: "முகப்பு",
+        navDashboard: "டாஷ்போர்டு",
+        navWhy: "SafeHer ஏன்?",
+        navEmergency: "அவசரம்",
+        navContacts: "தொடர்புகள்",
+        navLocation: "இருப்பிடம்",
+        navSafety: "பாதுகாப்பு",
+
+        tag: "பெண்கள் பாதுகாப்பு தளம்",
+        heroLine1: "உங்கள் பாதுகாப்பு.",
+        heroLine2: "ஒரே தட்டில்.",
+        heroDescription:
+          "SafeHer அவசர உதவி, நம்பகமான தொடர்புகள், இருப்பிட உதவி மற்றும் விரைவான உதவியை ஒரே பாதுகாப்பு தளத்தில் வழங்குகிறது.",
+        heroStrong:
+          "ஒவ்வொரு நொடியும் முக்கியமான தருணத்திற்காக உருவாக்கப்பட்டது.",
+        sosCaption:
+          "அவசரநிலையில் அழுத்தவும்",
+
+        emergencyTitle:
+          "அவசர உதவி",
+        emergencySubtitle:
+          "முக்கிய அவசர சேவைகளுக்கு விரைவான அணுகல்.",
+
+        policeTitle:
+          "🚔 காவல்துறை",
+        policeDescription:
+          "இந்தியாவின் அவசர பதில் எண்ணுக்கு நேரடி அணுகல்.",
+        call112:
+          "112 அழைக்கவும்",
+
+        ambulanceTitle:
+          "🚑 ஆம்புலன்ஸ்",
+        ambulanceDescription:
+          "மருத்துவ அவசரநிலையில் ஆம்புலன்ஸ் உதவியை விரைவாக தொடர்பு கொள்ளுங்கள்.",
+        call108:
+          "108 அழைக்கவும்",
+
+        nearbyTitle:
+          "📍 அருகிலுள்ள உதவி",
+        nearbyDescription:
+          "Maps மூலம் அருகிலுள்ள காவல் நிலையங்கள் மற்றும் மருத்துவமனைகளைக் கண்டறியவும்.",
+        nearbyPolice:
+          "அருகிலுள்ள காவல்துறை",
+        nearbyHospital:
+          "அருகிலுள்ள மருத்துவமனை",
+
+        contactsTitle:
+          "நம்பகமான தொடர்புகள்",
+        contactsSubtitle:
+          "அவசரநிலையில் நீங்கள் நம்பக்கூடிய நபர்களைச் சேர்க்கவும்.",
+        contactNamePlaceholder:
+          "தொடர்பு பெயர்",
+        contactPhonePlaceholder:
+          "தொலைபேசி எண்",
+        addContact:
+          "+ நம்பகமான தொடர்பைச் சேர்க்கவும்",
+
+        locationTitle:
+          "தற்போதைய இருப்பிடம்",
+        locationSubtitle:
+          "சமீபத்திய இருப்பிடத்தைப் பெற்று Maps-ல் திறக்கவும்.",
+        locationStatusTitle:
+          "📍 இருப்பிட நிலை",
+        locationNotRequested:
+          "இன்னும் இருப்பிடம் கோரப்படவில்லை.",
+        latitude:
+          "அட்சரேகை",
+        longitude:
+          "தீர்க்கரேகை",
+        accuracy:
+          "தோராயமான துல்லியம்",
+        getLocation:
+          "தற்போதைய இருப்பிடத்தைப் பெறவும்",
+        openMaps:
+          "Maps-ல் இருப்பிடத்தைத் திறக்கவும்",
+
+        alertCenterTitle:
+          "🚨 அவசர எச்சரிக்கை மையம்",
+        alertCenterSubtitle:
+          "உங்கள் அவசர பதில் செயல்முறை தயாராக உள்ளது.",
+        sosActive:
+          "SOS செயல்பாட்டில்",
+
+        flowSOS:
+          "🚨 SOS",
+        flowLocation:
+          "📍 இருப்பிடம்",
+        flowContacts:
+          "👤 தொடர்புகள்",
+        flowHelp:
+          "🆘 உதவி",
+
+        alertPreview:
+          "எச்சரிக்கை முன்னோட்டம்",
+        safeHerEmergency:
+          "🚨 SAFEHER அவசர எச்சரிக்கை",
+        statusLabel:
+          "நிலை:",
+        needsHelp:
+          "பயனருக்கு உடனடி உதவி தேவை.",
+        locationLabel:
+          "📍 இருப்பிடம்:",
+        timeLabel:
+          "🕒 நேரம்:",
+        trustedContactLabel:
+          "👤 நம்பகமான தொடர்பு:",
+        emergencyLabel:
+          "📞 அவசரம்:",
+        call112Instruction:
+          "உடனடி உதவி தேவைப்பட்டால் 112 அழைக்கவும்.",
+        sendAlertTitle:
+          "நம்பகமான தொடர்புகளுக்கு எச்சரிக்கை அனுப்பவும்",
+        callEmergency112:
+          "📞 அவசர சேவை — 112",
+        openCurrentLocation:
+          "📍 தற்போதைய இருப்பிடத்தைத் திறக்கவும்",
+
+        dashboardTitle:
+          "பாதுகாப்பு டாஷ்போர்டு",
+        dashboardSubtitle:
+          "உங்கள் SafeHer பாதுகாப்பு அமைப்பின் விரைவான கண்ணோட்டம்.",
+        dashboardContacts:
+          "அவசர தொடர்புகள்",
+        dashboardLocation:
+          "இருப்பிட நிலை",
+        dashboardSOS:
+          "SOS நிலை",
+        dashboardActivity:
+          "கடைசி செயல்பாடு",
+
+        whyTitle:
+          "SafeHer ஏன்?",
+        whyIntro:
+          "அவசர சூழ்நிலைகளில் தேட, முடிவு செய்ய அல்லது விளக்க நேரம் கிடையாது. SafeHer முக்கிய பாதுகாப்பு செயல்களை ஒரே எளிய செயல்முறையில் கொண்டுவருகிறது.",
+        whySOS:
+          "ஒரே-தட்டு SOS",
+        whySOSDescription:
+          "சிறிய cancellation window உடன் அவசர பதிலை செயல்படுத்தவும்.",
+        whyLocation:
+          "இருப்பிடம் தயார்",
+        whyLocationDescription:
+          "சமீபத்திய இருப்பிடத்தைப் பெற்று நேரடியாக Maps-ல் திறக்கவும்.",
+        whyNetwork:
+          "நம்பகமான நெட்வொர்க்",
+        whyNetworkDescription:
+          "முக்கிய தொடர்புகளைச் சேமித்து விரைவாக அழைக்கவும் அல்லது எச்சரிக்கை செய்தியைத் தயாரிக்கவும்.",
+        whyNearby:
+          "அருகிலுள்ள உதவி",
+        whyNearbyDescription:
+          "அருகிலுள்ள காவல் நிலையங்கள் மற்றும் மருத்துவமனைகளை விரைவாகக் கண்டறியவும்.",
+        whyStrip:
+          "ஒவ்வொரு நொடியும் முக்கியமான தருணத்திற்காக உருவாக்கப்பட்டது.<br><br>SOS → இருப்பிடம் → தொடர்பு → உதவி",
+
+        historyTitle:
+          "அவசர செயல்பாடு",
+        historySubtitle:
+          "SafeHer-ல் சமீபத்தில் செய்யப்பட்ட செயல்கள்.",
+        clearActivity:
+          "செயல்பாட்டை அழிக்கவும்",
+
+        safetyTitle:
+          "பாதுகாப்பு குறிப்புகள்",
+        safetySubtitle:
+          "எளிய பழக்கங்கள் அவசர சூழ்நிலைகளை கையாள உதவும்.",
+
+        tip1Title:
+          "01 — விழிப்புடன் இருங்கள்",
+        tip1Text:
+          "குறிப்பாக தனியாக பயணம் செய்யும்போது சுற்றுப்புறத்தை கவனியுங்கள்.",
+
+        tip2Title:
+          "02 — தொடர்புகளை தயார் வைத்திருங்கள்",
+        tip2Text:
+          "அவசரநிலைக்கு முன் நம்பகமான நபர்களை தொடர்புகளில் சேர்க்கவும்.",
+
+        tip3Title:
+          "03 — இருப்பிடத்தை கவனமாக பகிரவும்",
+        tip3Text:
+          "உங்கள் இருப்பிடத்தை நம்பகமான நபர்கள் அல்லது அவசர சேவைகளுடன் மட்டுமே பகிரவும்.",
+
+        tip4Title:
+          "04 — அவசர எண்களை அறிந்து கொள்ளுங்கள்",
+        tip4Text:
+          "இந்தியாவின் அவசர பதில் எண் 112.",
+
+        footerText:
+          "— பெண்கள் பாதுகாப்பு தளம்",
+        footerPrototype:
+          "புதுமை மற்றும் ஹேக்கத்தான் விளக்கத்திற்காக உருவாக்கப்பட்ட முன்மாதிரி."
+      },
+
+
+      te: {
+
+        navHome: "హోమ్",
+        navDashboard: "డాష్‌బోర్డ్",
+        navWhy: "SafeHer ఎందుకు?",
+        navEmergency: "అత్యవసరం",
+        navContacts: "కాంటాక్ట్స్",
+        navLocation: "స్థానం",
+        navSafety: "భద్రత",
+
+        tag: "మహిళల భద్రతా ప్లాట్‌ఫారమ్",
+        heroLine1: "మీ భద్రత.",
+        heroLine2: "ఒక్క ట్యాప్ దూరంలో.",
+        heroDescription:
+          "SafeHer అత్యవసర సహాయం, నమ్మకమైన కాంటాక్ట్స్, లొకేషన్ సహాయం మరియు వేగవంతమైన సహాయాన్ని ఒకే భద్రతా ప్లాట్‌ఫారమ్‌లో అందిస్తుంది.",
+        heroStrong:
+          "ప్రతి సెకను ముఖ్యమైన సమయంలో ఉపయోగించడానికి రూపొందించబడింది.",
+        sosCaption:
+          "అత్యవసర పరిస్థితిలో నొక్కండి",
+
+        emergencyTitle:
+          "అత్యవసర సహాయం",
+        emergencySubtitle:
+          "ముఖ్యమైన అత్యవసర సేవలకు వేగవంతమైన యాక్సెస్.",
+
+        policeTitle:
+          "🚔 పోలీస్",
+        policeDescription:
+          "భారతదేశ అత్యవసర ప్రతిస్పందన నంబర్‌కు నేరుగా యాక్సెస్.",
+        call112:
+          "112కి కాల్ చేయండి",
+
+        ambulanceTitle:
+          "🚑 అంబులెన్స్",
+        ambulanceDescription:
+          "వైద్య అత్యవసర పరిస్థితిలో అంబులెన్స్ సహాయాన్ని త్వరగా సంప్రదించండి.",
+        call108:
+          "108కి కాల్ చేయండి",
+
+        nearbyTitle:
+          "📍 సమీప సహాయం",
+        nearbyDescription:
+          "Maps ఉపయోగించి సమీపంలోని పోలీస్ స్టేషన్లు మరియు ఆసుపత్రులను కనుగొనండి.",
+        nearbyPolice:
+          "సమీప పోలీస్",
+        nearbyHospital:
+          "సమీప ఆసుపత్రి",
+
+        contactsTitle:
+          "నమ్మకమైన కాంటాక్ట్స్",
+        contactsSubtitle:
+          "అత్యవసర సమయంలో మీరు నమ్మగల వ్యక్తులను జోడించండి.",
+        contactNamePlaceholder:
+          "కాంటాక్ట్ పేరు",
+        contactPhonePlaceholder:
+          "ఫోన్ నంబర్",
+        addContact:
+          "+ నమ్మకమైన కాంటాక్ట్ జోడించండి",
+
+        locationTitle:
+          "ప్రస్తుత స్థానం",
+        locationSubtitle:
+          "మీ తాజా అందుబాటులో ఉన్న స్థానాన్ని పొందండి మరియు Mapsలో తెరవండి.",
+        locationStatusTitle:
+          "📍 లొకేషన్ స్థితి",
+        locationNotRequested:
+          "ఇంకా లొకేషన్ అభ్యర్థించబడలేదు.",
+        latitude:
+          "అక్షాంశం",
+        longitude:
+          "రేఖాంశం",
+        accuracy:
+          "సుమారు ఖచ్చితత్వం",
+        getLocation:
+          "ప్రస్తుత లొకేషన్ పొందండి",
+        openMaps:
+          "Mapsలో లొకేషన్ తెరవండి",
+
+        alertCenterTitle:
+          "🚨 అత్యవసర అలర్ట్ సెంటర్",
+        alertCenterSubtitle:
+          "మీ అత్యవసర ప్రతిస్పందన ప్రక్రియ సిద్ధంగా ఉంది.",
+        sosActive:
+          "SOS యాక్టివ్",
+
+        flowSOS:
+          "🚨 SOS",
+        flowLocation:
+          "📍 లొకేషన్",
+        flowContacts:
+          "👤 కాంటాక్ట్స్",
+        flowHelp:
+          "🆘 సహాయం",
+
+        alertPreview:
+          "అలర్ట్ ప్రివ్యూ",
+        safeHerEmergency:
+          "🚨 SAFEHER అత్యవసర అలర్ట్",
+        statusLabel:
+          "స్థితి:",
+        needsHelp:
+          "వినియోగదారునికి తక్షణ సహాయం అవసరం.",
+        locationLabel:
+          "📍 లొకేషన్:",
+        timeLabel:
+          "🕒 సమయం:",
+        trustedContactLabel:
+          "👤 నమ్మకమైన కాంటాక్ట్:",
+        emergencyLabel:
+          "📞 అత్యవసరం:",
+        call112Instruction:
+          "తక్షణ సహాయం అవసరమైతే 112కి కాల్ చేయండి.",
+        sendAlertTitle:
+          "నమ్మకమైన కాంటాక్ట్స్‌కు అలర్ట్ పంపండి",
+        callEmergency112:
+          "📞 అత్యవసర సేవ — 112",
+        openCurrentLocation:
+          "📍 ప్రస్తుత లొకేషన్ తెరవండి",
+
+        dashboardTitle:
+          "భద్రతా డాష్‌బోర్డ్",
+        dashboardSubtitle:
+          "మీ SafeHer భద్రతా సెటప్ యొక్క త్వరిత అవలోకనం.",
+        dashboardContacts:
+          "అత్యవసర కాంటాక్ట్స్",
+        dashboardLocation:
+          "లొకేషన్ స్థితి",
+        dashboardSOS:
+          "SOS స్థితి",
+        dashboardActivity:
+          "చివరి కార్యకలాపం",
+
+        whyTitle:
+          "SafeHer ఎందుకు?",
+        whyIntro:
+          "అత్యవసర పరిస్థితుల్లో వెతకడానికి, నిర్ణయం తీసుకోవడానికి లేదా వివరించడానికి సమయం ఉండదు. SafeHer ముఖ్యమైన భద్రతా చర్యలను ఒక సులభమైన ప్రక్రియలోకి తీసుకువస్తుంది.",
+        whySOS:
+          "వన్-ట్యాప్ SOS",
+        whySOSDescription:
+          "చిన్న cancellation windowతో అత్యవసర ప్రతిస్పందనను ప్రారంభించండి.",
+        whyLocation:
+          "లొకేషన్ సిద్ధం",
+        whyLocationDescription:
+          "తాజా లొకేషన్‌ను పొందండి మరియు నేరుగా Mapsలో తెరవండి.",
+        whyNetwork:
+          "నమ్మకమైన నెట్‌వర్క్",
+        whyNetworkDescription:
+          "ముఖ్యమైన కాంటాక్ట్స్‌ను సేవ్ చేసి త్వరగా కాల్ లేదా అలర్ట్ సందేశాన్ని సిద్ధం చేయండి.",
+        whyNearby:
+          "సమీప సహాయం",
+        whyNearbyDescription:
+          "సమీప పోలీస్ స్టేషన్లు మరియు ఆసుపత్రులను త్వరగా కనుగొనండి.",
+        whyStrip:
+          "ప్రతి సెకను ముఖ్యమైన సమయంలో ఉపయోగించడానికి రూపొందించబడింది.<br><br>SOS → లొకేషన్ → కాంటాక్ట్ → సహాయం",
+
+        historyTitle:
+          "అత్యవసర కార్యకలాపాలు",
+        historySubtitle:
+          "SafeHerలో ఇటీవల చేసిన చర్యలు.",
+        clearActivity:
+          "కార్యకలాపాన్ని క్లియర్ చేయండి",
+
+        safetyTitle:
+          "భద్రతా సూచనలు",
+        safetySubtitle:
+          "సులభమైన అలవాట్లు అత్యవసర పరిస్థితులను ఎదుర్కోవడంలో సహాయపడతాయి.",
+
+        tip1Title:
+          "01 — అప్రమత్తంగా ఉండండి",
+        tip1Text:
+          "ముఖ్యంగా ఒంటరిగా ప్రయాణిస్తున్నప్పుడు మీ చుట్టూ ఉన్న పరిస్థితులను గమనించండి.",
+
+        tip2Title:
+          "02 — కాంటాక్ట్స్ సిద్ధంగా ఉంచండి",
+        tip2Text:
+          "అత్యవసర పరిస్థితికి ముందే నమ్మకమైన వ్యక్తులను కాంటాక్ట్స్‌లో జోడించండి.",
+
+        tip3Title:
+          "03 — లొకేషన్‌ను జాగ్రత్తగా షేర్ చేయండి",
+        tip3Text:
+          "మీ లొకేషన్‌ను నమ్మకమైన వ్యక్తులు లేదా అత్యవసర సేవలతో మాత్రమే షేర్ చేయండి.",
+
+        tip4Title:
+          "04 — అత్యవసర నంబర్లను తెలుసుకోండి",
+        tip4Text:
+          "భారతదేశ అత్యవసర ప్రతిస్పందన నంబర్ 112.",
+
+        footerText:
+          "— మహిళల భద్రతా ప్లాట్‌ఫారమ్",
+        footerPrototype:
+          "ఇన్నోవేషన్ మరియు హ్యాకథాన్ ప్రదర్శన కోసం రూపొందించిన ప్రోటోటైప్."
+      },
+
+
+      kn: {
+
+        navHome: "ಮುಖಪುಟ",
+        navDashboard: "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+        navWhy: "SafeHer ಏಕೆ?",
+        navEmergency: "ತುರ್ತು",
+        navContacts: "ಸಂಪರ್ಕಗಳು",
+        navLocation: "ಸ್ಥಳ",
+        navSafety: "ಸುರಕ್ಷತೆ",
+
+        tag: "ಮಹಿಳಾ ಸುರಕ್ಷತಾ ವೇದಿಕೆ",
+        heroLine1: "ನಿಮ್ಮ ಸುರಕ್ಷತೆ.",
+        heroLine2: "ಒಂದು ಟ್ಯಾಪ್ ದೂರ.",
+        heroDescription:
+          "SafeHer ತುರ್ತು ಸಹಾಯ, ನಂಬಿಕೆಯ ಸಂಪರ್ಕಗಳು, ಸ್ಥಳ ಸಹಾಯ ಮತ್ತು ವೇಗದ ಸಹಾಯವನ್ನು ಒಂದೇ ಸುರಕ್ಷತಾ ವೇದಿಕೆಯಲ್ಲಿ ಒದಗಿಸುತ್ತದೆ.",
+        heroStrong:
+          "ಪ್ರತಿ ಕ್ಷಣವೂ ಮುಖ್ಯವಾಗಿರುವ ಸಮಯಕ್ಕಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ.",
+        sosCaption:
+          "ತುರ್ತು ಸಂದರ್ಭದಲ್ಲಿ ಒತ್ತಿರಿ",
+
+        emergencyTitle:
+          "ತುರ್ತು ಸಹಾಯ",
+        emergencySubtitle:
+          "ಅಗತ್ಯ ತುರ್ತು ಸೇವೆಗಳಿಗೆ ತ್ವರಿತ ಪ್ರವೇಶ.",
+
+        policeTitle:
+          "🚔 ಪೊಲೀಸ್",
+        policeDescription:
+          "ಭಾರತದ ತುರ್ತು ಪ್ರತಿಕ್ರಿಯೆ ಸಂಖ್ಯೆಗೆ ನೇರ ಪ್ರವೇಶ.",
+        call112:
+          "112 ಕರೆ ಮಾಡಿ",
+
+        ambulanceTitle:
+          "🚑 ಆಂಬ್ಯುಲೆನ್ಸ್",
+        ambulanceDescription:
+          "ವೈದ್ಯಕೀಯ ತುರ್ತು ಸಂದರ್ಭದಲ್ಲಿ ಆಂಬ್ಯುಲೆನ್ಸ್ ಸಹಾಯವನ್ನು ತ್ವರಿತವಾಗಿ ಸಂಪರ್ಕಿಸಿ.",
+        call108:
+          "108 ಕರೆ ಮಾಡಿ",
+
+        nearbyTitle:
+          "📍 ಹತ್ತಿರದ ಸಹಾಯ",
+        nearbyDescription:
+          "Maps ಬಳಸಿ ಹತ್ತಿರದ ಪೊಲೀಸ್ ಠಾಣೆಗಳು ಮತ್ತು ಆಸ್ಪತ್ರೆಗಳನ್ನು ಹುಡುಕಿ.",
+        nearbyPolice:
+          "ಹತ್ತಿರದ ಪೊಲೀಸ್",
+        nearbyHospital:
+          "ಹತ್ತಿರದ ಆಸ್ಪತ್ರೆ",
+
+        contactsTitle:
+          "ನಂಬಿಕೆಯ ಸಂಪರ್ಕಗಳು",
+        contactsSubtitle:
+          "ತುರ್ತು ಸಂದರ್ಭದಲ್ಲಿ ನೀವು ನಂಬಬಹುದಾದ ಜನರನ್ನು ಸೇರಿಸಿ.",
+        contactNamePlaceholder:
+          "ಸಂಪರ್ಕದ ಹೆಸರು",
+        contactPhonePlaceholder:
+          "ಫೋನ್ ಸಂಖ್ಯೆ",
+        addContact:
+          "+ ನಂಬಿಕೆಯ ಸಂಪರ್ಕ ಸೇರಿಸಿ",
+
+        locationTitle:
+          "ಪ್ರಸ್ತುತ ಸ್ಥಳ",
+        locationSubtitle:
+          "ನಿಮ್ಮ ಇತ್ತೀಚಿನ ಲಭ್ಯ ಸ್ಥಳವನ್ನು ಪಡೆಯಿರಿ ಮತ್ತು Mapsನಲ್ಲಿ ತೆರೆಯಿರಿ.",
+        locationStatusTitle:
+          "📍 ಸ್ಥಳದ ಸ್ಥಿತಿ",
+        locationNotRequested:
+          "ಇನ್ನೂ ಸ್ಥಳವನ್ನು ವಿನಂತಿಸಲಾಗಿಲ್ಲ.",
+        latitude:
+          "ಅಕ್ಷಾಂಶ",
+        longitude:
+          "ರೇಖಾಂಶ",
+        accuracy:
+          "ಅಂದಾಜು ನಿಖರತೆ",
+        getLocation:
+          "ಪ್ರಸ್ತುತ ಸ್ಥಳ ಪಡೆಯಿರಿ",
+        openMaps:
+          "Mapsನಲ್ಲಿ ಸ್ಥಳ ತೆರೆಯಿರಿ",
+
+        alertCenterTitle:
+          "🚨 ತುರ್ತು ಎಚ್ಚರಿಕೆ ಕೇಂದ್ರ",
+        alertCenterSubtitle:
+          "ನಿಮ್ಮ ತುರ್ತು ಪ್ರತಿಕ್ರಿಯೆ ಪ್ರಕ್ರಿಯೆ ಸಿದ್ಧವಾಗಿದೆ.",
+        sosActive:
+          "SOS ಸಕ್ರಿಯ",
+
+        flowSOS:
+          "🚨 SOS",
+        flowLocation:
+          "📍 ಸ್ಥಳ",
+        flowContacts:
+          "👤 ಸಂಪರ್ಕಗಳು",
+        flowHelp:
+          "🆘 ಸಹಾಯ",
+
+        alertPreview:
+          "ಎಚ್ಚರಿಕೆ ಪೂರ್ವವೀಕ್ಷಣೆ",
+        safeHerEmergency:
+          "🚨 SAFEHER ತುರ್ತು ಎಚ್ಚರಿಕೆ",
+        statusLabel:
+          "ಸ್ಥಿತಿ:",
+        needsHelp:
+          "ಬಳಕೆದಾರರಿಗೆ ತಕ್ಷಣದ ಸಹಾಯ ಬೇಕಾಗಿದೆ.",
+        locationLabel:
+          "📍 ಸ್ಥಳ:",
+        timeLabel:
+          "🕒 ಸಮಯ:",
+        trustedContactLabel:
+          "👤 ನಂಬಿಕೆಯ ಸಂಪರ್ಕ:",
+        emergencyLabel:
+          "📞 ತುರ್ತು:",
+        call112Instruction:
+          "ತಕ್ಷಣದ ಸಹಾಯ ಅಗತ್ಯವಿದ್ದರೆ 112 ಕರೆ ಮಾಡಿ.",
+        sendAlertTitle:
+          "ನಂಬಿಕೆಯ ಸಂಪರ್ಕಗಳಿಗೆ ಎಚ್ಚರಿಕೆ ಕಳುಹಿಸಿ",
+        callEmergency112:
+          "📞 ತುರ್ತು ಸೇವೆ — 112",
+        openCurrentLocation:
+          "📍 ಪ್ರಸ್ತುತ ಸ್ಥಳ ತೆರೆಯಿರಿ",
+
+        dashboardTitle:
+          "ಸುರಕ್ಷತಾ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+        dashboardSubtitle:
+          "ನಿಮ್ಮ SafeHer ಸುರಕ್ಷತಾ ವ್ಯವಸ್ಥೆಯ ತ್ವರಿತ ಅವಲೋಕನ.",
+        dashboardContacts:
+          "ತುರ್ತು ಸಂಪರ್ಕಗಳು",
+        dashboardLocation:
+          "ಸ್ಥಳದ ಸ್ಥಿತಿ",
+        dashboardSOS:
+          "SOS ಸ್ಥಿತಿ",
+        dashboardActivity:
+          "ಕೊನೆಯ ಚಟುವಟಿಕೆ",
+
+        whyTitle:
+          "SafeHer ಏಕೆ?",
+        whyIntro:
+          "ತುರ್ತು ಸಂದರ್ಭಗಳಲ್ಲಿ ಹುಡುಕಲು, ನಿರ್ಧರಿಸಲು ಅಥವಾ ವಿವರಿಸಲು ಸಮಯ ಇರುವುದಿಲ್ಲ. SafeHer ಪ್ರಮುಖ ಸುರಕ್ಷತಾ ಕ್ರಮಗಳನ್ನು ಒಂದೇ ಸರಳ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿ ತರುತ್ತದೆ.",
+        whySOS:
+          "ಒನ್-ಟ್ಯಾಪ್ SOS",
+        whySOSDescription:
+          "ಚಿಕ್ಕ cancellation windowನೊಂದಿಗೆ ತುರ್ತು ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ.",
+        whyLocation:
+          "ಸ್ಥಳ ಸಿದ್ಧ",
+        whyLocationDescription:
+          "ಇತ್ತೀಚಿನ ಸ್ಥಳವನ್ನು ಪಡೆದು ನೇರವಾಗಿ Mapsನಲ್ಲಿ ತೆರೆಯಿರಿ.",
+        whyNetwork:
+          "ನಂಬಿಕೆಯ ನೆಟ್‌ವರ್ಕ್",
+        whyNetworkDescription:
+          "ಮುಖ್ಯ ಸಂಪರ್ಕಗಳನ್ನು ಉಳಿಸಿ ಮತ್ತು ತ್ವರಿತವಾಗಿ ಕರೆ ಅಥವಾ ಎಚ್ಚರಿಕೆ ಸಂದೇಶವನ್ನು ಸಿದ್ಧಪಡಿಸಿ.",
+        whyNearby:
+          "ಹತ್ತಿರದ ಸಹಾಯ",
+        whyNearbyDescription:
+          "ಹತ್ತಿರದ ಪೊಲೀಸ್ ಠಾಣೆಗಳು ಮತ್ತು ಆಸ್ಪತ್ರೆಗಳನ್ನು ತ್ವರಿತವಾಗಿ ಹುಡುಕಿ.",
+        whyStrip:
+          "ಪ್ರತಿ ಕ್ಷಣವೂ ಮುಖ್ಯವಾಗಿರುವ ಸಮಯಕ್ಕಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ.<br><br>SOS → ಸ್ಥಳ → ಸಂಪರ್ಕ → ಸಹಾಯ",
+
+        historyTitle:
+          "ತುರ್ತು ಚಟುವಟಿಕೆ",
+        historySubtitle:
+          "SafeHerನಲ್ಲಿ ಇತ್ತೀಚೆಗೆ ಮಾಡಿದ ಚಟುವಟಿಕೆಗಳು.",
+        clearActivity:
+          "ಚಟುವಟಿಕೆ ತೆರವುಗೊಳಿಸಿ",
+
+        safetyTitle:
+          "ಸುರಕ್ಷತಾ ಸಲಹೆಗಳು",
+        safetySubtitle:
+          "ಸರಳ ಅಭ್ಯಾಸಗಳು ತುರ್ತು ಸಂದರ್ಭಗಳನ್ನು ನಿಭಾಯಿಸಲು ಸಹಾಯ ಮಾಡಬಹುದು.",
+
+        tip1Title:
+          "01 — ಎಚ್ಚರಿಕೆಯಿಂದಿರಿ",
+        tip1Text:
+          "ವಿಶೇಷವಾಗಿ ಒಬ್ಬರೇ ಪ್ರಯಾಣಿಸುವಾಗ ನಿಮ್ಮ ಸುತ್ತಮುತ್ತಲಿನ ಪರಿಸ್ಥಿತಿಯನ್ನು ಗಮನಿಸಿ.",
+
+        tip2Title:
+          "02 — ಸಂಪರ್ಕಗಳನ್ನು ಸಿದ್ಧವಾಗಿಡಿ",
+        tip2Text:
+          "ತುರ್ತು ಪರಿಸ್ಥಿತಿಗೆ ಮುನ್ನ ನಂಬಿಕೆಯ ವ್ಯಕ್ತಿಗಳನ್ನು ಸಂಪರ್ಕಗಳಲ್ಲಿ ಸೇರಿಸಿ.",
+
+        tip3Title:
+          "03 — ಸ್ಥಳವನ್ನು ಎಚ್ಚರಿಕೆಯಿಂದ ಹಂಚಿಕೊಳ್ಳಿ",
+        tip3Text:
+          "ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ನಂಬಿಕೆಯ ವ್ಯಕ್ತಿಗಳು ಅಥವಾ ತುರ್ತು ಸೇವೆಗಳೊಂದಿಗೆ ಮಾತ್ರ ಹಂಚಿಕೊಳ್ಳಿ.",
+
+        tip4Title:
+          "04 — ತುರ್ತು ಸಂಖ್ಯೆಗಳನ್ನು ತಿಳಿದುಕೊಳ್ಳಿ",
+        tip4Text:
+          "ಭಾರತದ ತುರ್ತು ಪ್ರತಿಕ್ರಿಯೆ ಸಂಖ್ಯೆ 112.",
+
+        footerText:
+          "— ಮಹಿಳಾ ಸುರಕ್ಷತಾ ವೇದಿಕೆ",
+        footerPrototype:
+          "ನವೀನತೆ ಮತ್ತು ಹ್ಯಾಕಥಾನ್ ಪ್ರದರ್ಶನಕ್ಕಾಗಿ ನಿರ್ಮಿಸಲಾದ ಪ್ರೋಟೋಟೈಪ್."
+      },
+
+
+      ml: {
+
+        navHome: "ഹോം",
+        navDashboard: "ഡാഷ്ബോർഡ്",
+        navWhy: "SafeHer എന്തുകൊണ്ട്?",
+        navEmergency: "അടിയന്തരം",
+        navContacts: "ബന്ധങ്ങൾ",
+        navLocation: "സ്ഥലം",
+        navSafety: "സുരക്ഷ",
+
+        tag: "വനിതാ സുരക്ഷാ പ്ലാറ്റ്ഫോം",
+        heroLine1: "നിങ്ങളുടെ സുരക്ഷ.",
+        heroLine2: "ഒരു ടാപ്പ് മാത്രം.",
+        heroDescription:
+          "SafeHer അടിയന്തര സഹായം, വിശ്വസനീയമായ കോൺടാക്റ്റുകൾ, ലൊക്കേഷൻ സഹായം, വേഗത്തിലുള്ള സഹായം എന്നിവ ഒരു സുരക്ഷാ പ്ലാറ്റ്ഫോമിൽ നൽകുന്നു.",
+        heroStrong:
+          "ഓരോ സെക്കൻഡും പ്രധാനമായ നിമിഷത്തിനായി നിർമ്മിച്ചത്.",
+        sosCaption:
+          "അടിയന്തരാവസ്ഥയിൽ അമർത്തുക",
+
+        emergencyTitle:
+          "അടിയന്തര സഹായം",
+        emergencySubtitle:
+          "പ്രധാനപ്പെട്ട അടിയന്തര സേവനങ്ങളിലേക്ക് വേഗത്തിലുള്ള പ്രവേശനം.",
+
+        policeTitle:
+          "🚔 പോലീസ്",
+        policeDescription:
+          "ഇന്ത്യയുടെ അടിയന്തര പ്രതികരണ നമ്പറിലേക്ക് നേരിട്ടുള്ള പ്രവേശനം.",
+        call112:
+          "112 വിളിക്കുക",
+
+        ambulanceTitle:
+          "🚑 ആംബുലൻസ്",
+        ambulanceDescription:
+          "മെഡിക്കൽ അടിയന്തരാവസ്ഥയിൽ ആംബുലൻസ് സഹായവുമായി വേഗത്തിൽ ബന്ധപ്പെടുക.",
+        call108:
+          "108 വിളിക്കുക",
+
+        nearbyTitle:
+          "📍 സമീപത്തെ സഹായം",
+        nearbyDescription:
+          "Maps ഉപയോഗിച്ച് സമീപത്തെ പോലീസ് സ്റ്റേഷനുകളും ആശുപത്രികളും കണ്ടെത്തുക.",
+        nearbyPolice:
+          "സമീപത്തെ പോലീസ്",
+        nearbyHospital:
+          "സമീപത്തെ ആശുപത്രി",
+
+        contactsTitle:
+          "വിശ്വസനീയമായ കോൺടാക്റ്റുകൾ",
+        contactsSubtitle:
+          "അടിയന്തരാവസ്ഥയിൽ ആശ്രയിക്കാവുന്ന ആളുകളെ ചേർക്കുക.",
+        contactNamePlaceholder:
+          "കോൺടാക്റ്റിന്റെ പേര്",
+        contactPhonePlaceholder:
+          "ഫോൺ നമ്പർ",
+        addContact:
+          "+ വിശ്വസനീയ കോൺടാക്റ്റ് ചേർക്കുക",
+
+        locationTitle:
+          "നിലവിലെ സ്ഥലം",
+        locationSubtitle:
+          "ഏറ്റവും പുതിയ ലഭ്യമായ സ്ഥലം നേടുകയും Maps-ൽ തുറക്കുകയും ചെയ്യുക.",
+        locationStatusTitle:
+          "📍 ലൊക്കേഷൻ നില",
+        locationNotRequested:
+          "ഇതുവരെ ലൊക്കേഷൻ ആവശ്യപ്പെട്ടിട്ടില്ല.",
+        latitude:
+          "അക്ഷാംശം",
+        longitude:
+          "രേഖാംശം",
+        accuracy:
+          "ഏകദേശ കൃത്യത",
+        getLocation:
+          "നിലവിലെ സ്ഥലം നേടുക",
+        openMaps:
+          "Maps-ൽ സ്ഥലം തുറക്കുക",
+
+        alertCenterTitle:
+          "🚨 അടിയന്തര അലർട്ട് സെന്റർ",
+        alertCenterSubtitle:
+          "നിങ്ങളുടെ അടിയന്തര പ്രതികരണ പ്രക്രിയ തയ്യാറാണ്.",
+        sosActive:
+          "SOS സജീവം",
+
+        flowSOS:
+          "🚨 SOS",
+        flowLocation:
+          "📍 സ്ഥലം",
+        flowContacts:
+          "👤 കോൺടാക്റ്റുകൾ",
+        flowHelp:
+          "🆘 സഹായം",
+
+        alertPreview:
+          "അലർട്ട് പ്രിവ്യൂ",
+        safeHerEmergency:
+          "🚨 SAFEHER അടിയന്തര അലർട്ട്",
+        statusLabel:
+          "നില:",
+        needsHelp:
+          "ഉപയോക്താവിന് ഉടൻ സഹായം ആവശ്യമാണ്.",
+        locationLabel:
+          "📍 സ്ഥലം:",
+        timeLabel:
+          "🕒 സമയം:",
+        trustedContactLabel:
+          "👤 വിശ്വസനീയ കോൺടാക്റ്റ്:",
+        emergencyLabel:
+          "📞 അടിയന്തരം:",
+        call112Instruction:
+          "ഉടൻ സഹായം ആവശ്യമെങ്കിൽ 112 വിളിക്കുക.",
+        sendAlertTitle:
+          "വിശ്വസനീയ കോൺടാക്റ്റുകൾക്ക് അലർട്ട് അയയ്ക്കുക",
+        callEmergency112:
+          "📞 അടിയന്തര സേവനം — 112",
+        openCurrentLocation:
+          "📍 നിലവിലെ സ്ഥലം തുറക്കുക",
+
+        dashboardTitle:
+          "സുരക്ഷാ ഡാഷ്ബോർഡ്",
+        dashboardSubtitle:
+          "നിങ്ങളുടെ SafeHer സുരക്ഷാ സംവിധാനത്തിന്റെ ദ്രുത അവലോകനം.",
+        dashboardContacts:
+          "അടിയന്തര കോൺടാക്റ്റുകൾ",
+        dashboardLocation:
+          "ലൊക്കേഷൻ നില",
+        dashboardSOS:
+          "SOS നില",
+        dashboardActivity:
+          "അവസാന പ്രവർത്തനം",
+
+        whyTitle:
+          "SafeHer എന്തുകൊണ്ട്?",
+        whyIntro:
+          "അടിയന്തര സാഹചര്യങ്ങളിൽ തിരയാനും തീരുമാനിക്കാനും വിശദീകരിക്കാനും സമയം ലഭിക്കില്ല. SafeHer പ്രധാന സുരക്ഷാ പ്രവർത്തനങ്ങളെ ഒരു ലളിതമായ പ്രക്രിയയിലേക്ക് കൊണ്ടുവരുന്നു.",
+        whySOS:
+          "വൺ-ടാപ്പ് SOS",
+        whySOSDescription:
+          "ചെറിയ cancellation window ഉപയോഗിച്ച് അടിയന്തര പ്രതികരണം സജീവമാക്കുക.",
+        whyLocation:
+          "ലൊക്കേഷൻ തയ്യാറാണ്",
+        whyLocationDescription:
+          "ഏറ്റവും പുതിയ ലൊക്കേഷൻ നേടി നേരിട്ട് Maps-ൽ തുറക്കുക.",
+        whyNetwork:
+          "വിശ്വസനീയ നെറ്റ്‌വർക്ക്",
+        whyNetworkDescription:
+          "പ്രധാന കോൺടാക്റ്റുകൾ സംരക്ഷിക്കുകയും വേഗത്തിൽ വിളിക്കുകയോ അലർട്ട് സന്ദേശം തയ്യാറാക്കുകയോ ചെയ്യുക.",
+        whyNearby:
+          "സമീപത്തെ സഹായം",
+        whyNearbyDescription:
+          "സമീപത്തെ പോലീസ് സ്റ്റേഷനുകളും ആശുപത്രികളും വേഗത്തിൽ കണ്ടെത്തുക.",
+        whyStrip:
+          "ഓരോ സെക്കൻഡും പ്രധാനമായ നിമിഷത്തിനായി നിർമ്മിച്ചത്.<br><br>SOS → സ്ഥലം → കോൺടാക്റ്റ് → സഹായം",
+
+        historyTitle:
+          "അടിയന്തര പ്രവർത്തനം",
+        historySubtitle:
+          "SafeHer-ൽ അടുത്തിടെ നടത്തിയ പ്രവർത്തനങ്ങൾ.",
+        clearActivity:
+          "പ്രവർത്തനം മായ്ക്കുക",
+
+        safetyTitle:
+          "സുരക്ഷാ നിർദ്ദേശങ്ങൾ",
+        safetySubtitle:
+          "ലളിതമായ ശീലങ്ങൾ അടിയന്തര സാഹചര്യങ്ങൾ കൈകാര്യം ചെയ്യാൻ സഹായിക്കും.",
+
+        tip1Title:
+          "01 — ജാഗ്രത പാലിക്കുക",
+        tip1Text:
+          "പ്രത്യേകിച്ച് ഒറ്റയ്ക്ക് യാത്ര ചെയ്യുമ്പോൾ ചുറ്റുപാടുകൾ ശ്രദ്ധിക്കുക.",
+
+        tip2Title:
+          "02 — കോൺടാക്റ്റുകൾ തയ്യാറാക്കി വയ്ക്കുക",
+        tip2Text:
+          "അടിയന്തരാവസ്ഥയ്ക്ക് മുമ്പ് വിശ്വസനീയരായ ആളുകളെ കോൺടാക്റ്റുകളിൽ ചേർക്കുക.",
+
+        tip3Title:
+          "03 — ലൊക്കേഷൻ ശ്രദ്ധാപൂർവ്വം പങ്കിടുക",
+        tip3Text:
+          "വിശ്വസനീയരായ ആളുകളുമായോ അടിയന്തര സേവനങ്ങളുമായോ മാത്രം നിങ്ങളുടെ ലൊക്കേഷൻ പങ്കിടുക.",
+
+        tip4Title:
+          "04 — അടിയന്തര നമ്പറുകൾ അറിയുക",
+        tip4Text:
+          "ഇന്ത്യയുടെ അടിയന്തര പ്രതികരണ നമ്പർ 112 ആണ്.",
+
+        footerText:
+          "— വനിതാ സുരക്ഷാ പ്ലാറ്റ്ഫോം",
+        footerPrototype:
+          "ഇന്നൊവേഷൻ, ഹാക്കത്തോൺ പ്രദർശനത്തിനായി വികസിപ്പിച്ച പ്രോട്ടോടൈപ്പ്."
+      },
+
+
+      pa: {
+
+        navHome: "ਹੋਮ",
+        navDashboard: "ਡੈਸ਼ਬੋਰਡ",
+        navWhy: "SafeHer ਕਿਉਂ?",
+        navEmergency: "ਐਮਰਜੈਂਸੀ",
+        navContacts: "ਸੰਪਰਕ",
+        navLocation: "ਟਿਕਾਣਾ",
+        navSafety: "ਸੁਰੱਖਿਆ",
+
+        tag: "ਮਹਿਲਾ ਸੁਰੱਖਿਆ ਪਲੇਟਫਾਰਮ",
+        heroLine1: "ਤੁਹਾਡੀ ਸੁਰੱਖਿਆ।",
+        heroLine2: "ਸਿਰਫ਼ ਇੱਕ ਟੈਪ ਦੂਰ।",
+        heroDescription:
+          "SafeHer ਐਮਰਜੈਂਸੀ ਸਹਾਇਤਾ, ਭਰੋਸੇਯੋਗ ਸੰਪਰਕ, ਟਿਕਾਣਾ ਸਹਾਇਤਾ ਅਤੇ ਤੇਜ਼ ਮਦਦ ਨੂੰ ਇੱਕ ਸਧਾਰਨ ਸੁਰੱਖਿਆ ਪਲੇਟਫਾਰਮ ਵਿੱਚ ਲਿਆਉਂਦਾ ਹੈ।",
+        heroStrong:
+          "ਉਸ ਸਮੇਂ ਲਈ ਬਣਾਇਆ ਗਿਆ ਹੈ ਜਦੋਂ ਹਰ ਸਕਿੰਟ ਮਹੱਤਵਪੂਰਨ ਹੁੰਦਾ ਹੈ।",
+        sosCaption:
+          "ਐਮਰਜੈਂਸੀ ਵਿੱਚ ਦਬਾਓ",
+
+        emergencyTitle:
+          "ਐਮਰਜੈਂਸੀ ਸਹਾਇਤਾ",
+        emergencySubtitle:
+          "ਜ਼ਰੂਰੀ ਐਮਰਜੈਂਸੀ ਸੇਵਾਵਾਂ ਤੱਕ ਤੇਜ਼ ਪਹੁੰਚ।",
+
+        policeTitle:
+          "🚔 ਪੁਲਿਸ",
+        policeDescription:
+          "ਭਾਰਤ ਦੇ ਐਮਰਜੈਂਸੀ ਰਿਸਪਾਂਸ ਨੰਬਰ ਤੱਕ ਸਿੱਧੀ ਪਹੁੰਚ।",
+        call112:
+          "112 'ਤੇ ਕਾਲ ਕਰੋ",
+
+        ambulanceTitle:
+          "🚑 ਐਂਬੂਲੈਂਸ",
+        ambulanceDescription:
+          "ਮੈਡੀਕਲ ਐਮਰਜੈਂਸੀ ਦੌਰਾਨ ਐਂਬੂਲੈਂਸ ਸਹਾਇਤਾ ਨਾਲ ਜਲਦੀ ਸੰਪਰਕ ਕਰੋ।",
+        call108:
+          "108 'ਤੇ ਕਾਲ ਕਰੋ",
+
+        nearbyTitle:
+          "📍 ਨੇੜਲੀ ਮਦਦ",
+        nearbyDescription:
+          "Maps ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਨੇੜਲੇ ਪੁਲਿਸ ਸਟੇਸ਼ਨ ਅਤੇ ਹਸਪਤਾਲ ਲੱਭੋ।",
+        nearbyPolice:
+          "ਨੇੜਲੀ ਪੁਲਿਸ",
+        nearbyHospital:
+          "ਨੇੜਲਾ ਹਸਪਤਾਲ",
+
+        contactsTitle:
+          "ਭਰੋਸੇਯੋਗ ਸੰਪਰਕ",
+        contactsSubtitle:
+          "ਐਮਰਜੈਂਸੀ ਦੌਰਾਨ ਜਿਨ੍ਹਾਂ 'ਤੇ ਭਰੋਸਾ ਕਰ ਸਕਦੇ ਹੋ, ਉਨ੍ਹਾਂ ਨੂੰ ਸ਼ਾਮਲ ਕਰੋ।",
+        contactNamePlaceholder:
+          "ਸੰਪਰਕ ਦਾ ਨਾਮ",
+        contactPhonePlaceholder:
+          "ਫੋਨ ਨੰਬਰ",
+        addContact:
+          "+ ਭਰੋਸੇਯੋਗ ਸੰਪਰਕ ਸ਼ਾਮਲ ਕਰੋ",
+
+        locationTitle:
+          "ਮੌਜੂਦਾ ਟਿਕਾਣਾ",
+        locationSubtitle:
+          "ਆਪਣਾ ਨਵੀਨਤਮ ਉਪਲਬਧ ਟਿਕਾਣਾ ਪ੍ਰਾਪਤ ਕਰੋ ਅਤੇ Maps ਵਿੱਚ ਖੋਲ੍ਹੋ।",
+        locationStatusTitle:
+          "📍 ਟਿਕਾਣੇ ਦੀ ਸਥਿਤੀ",
+        locationNotRequested:
+          "ਅਜੇ ਟਿਕਾਣੇ ਦੀ ਬੇਨਤੀ ਨਹੀਂ ਕੀਤੀ ਗਈ।",
+        latitude:
+          "ਅਕਸ਼ਾਂਸ਼",
+        longitude:
+          "ਦੇਸ਼ਾਂਤਰ",
+        accuracy:
+          "ਲਗਭਗ ਸਹੀਪਨ",
+        getLocation:
+          "ਮੌਜੂਦਾ ਟਿਕਾਣਾ ਪ੍ਰਾਪਤ ਕਰੋ",
+        openMaps:
+          "Maps ਵਿੱਚ ਟਿਕਾਣਾ ਖੋਲ੍ਹੋ",
+
+        alertCenterTitle:
+          "🚨 ਐਮਰਜੈਂਸੀ ਅਲਰਟ ਸੈਂਟਰ",
+        alertCenterSubtitle:
+          "ਤੁਹਾਡਾ ਐਮਰਜੈਂਸੀ ਰਿਸਪਾਂਸ ਫਲੋ ਤਿਆਰ ਹੈ।",
+        sosActive:
+          "SOS ਸਰਗਰਮ",
+
+        flowSOS:
+          "🚨 SOS",
+        flowLocation:
+          "📍 ਟਿਕਾਣਾ",
+        flowContacts:
+          "👤 ਸੰਪਰਕ",
+        flowHelp:
+          "🆘 ਮਦਦ",
+
+        alertPreview:
+          "ਅਲਰਟ ਪ੍ਰੀਵਿਊ",
+        safeHerEmergency:
+          "🚨 SAFEHER ਐਮਰਜੈਂਸੀ ਅਲਰਟ",
+        statusLabel:
+          "ਸਥਿਤੀ:",
+        needsHelp:
+          "ਯੂਜ਼ਰ ਨੂੰ ਤੁਰੰਤ ਮਦਦ ਦੀ ਲੋੜ ਹੈ।",
+        locationLabel:
+          "📍 ਟਿਕਾਣਾ:",
+        timeLabel:
+          "🕒 ਸਮਾਂ:",
+        trustedContactLabel:
+          "👤 ਭਰੋਸੇਯੋਗ ਸੰਪਰਕ:",
+        emergencyLabel:
+          "📞 ਐਮਰਜੈਂਸੀ:",
+        call112Instruction:
+          "ਜੇ ਤੁਰੰਤ ਮਦਦ ਦੀ ਲੋੜ ਹੈ ਤਾਂ 112 'ਤੇ ਕਾਲ ਕਰੋ।",
+        sendAlertTitle:
+          "ਭਰੋਸੇਯੋਗ ਸੰਪਰਕਾਂ ਨੂੰ ਅਲਰਟ ਭੇਜੋ",
+        callEmergency112:
+          "📞 ਐਮਰਜੈਂਸੀ ਸੇਵਾ — 112",
+        openCurrentLocation:
+          "📍 ਮੌਜੂਦਾ ਟਿਕਾਣਾ ਖੋਲ੍ਹੋ",
+
+        dashboardTitle:
+          "ਸੁਰੱਖਿਆ ਡੈਸ਼ਬੋਰਡ",
+        dashboardSubtitle:
+          "ਤੁਹਾਡੇ SafeHer ਸੁਰੱਖਿਆ ਸੈਟਅਪ ਦੀ ਤੇਜ਼ ਝਲਕ।",
+        dashboardContacts:
+          "ਐਮਰਜੈਂਸੀ ਸੰਪਰਕ",
+        dashboardLocation:
+          "ਟਿਕਾਣੇ ਦੀ ਸਥਿਤੀ",
+        dashboardSOS:
+          "SOS ਸਥਿਤੀ",
+        dashboardActivity:
+          "ਆਖਰੀ ਗਤੀਵਿਧੀ",
+
+        whyTitle:
+          "SafeHer ਕਿਉਂ?",
+        whyIntro:
+          "ਐਮਰਜੈਂਸੀ ਸਥਿਤੀ ਵਿੱਚ ਖੋਜਣ, ਫੈਸਲਾ ਕਰਨ ਜਾਂ ਸਮਝਾਉਣ ਲਈ ਸਮਾਂ ਨਹੀਂ ਹੁੰਦਾ। SafeHer ਮਹੱਤਵਪੂਰਨ ਸੁਰੱਖਿਆ ਕਾਰਵਾਈਆਂ ਨੂੰ ਇੱਕ ਸਧਾਰਨ ਫਲੋ ਵਿੱਚ ਲਿਆਉਂਦਾ ਹੈ।",
+        whySOS:
+          "ਵਨ-ਟੈਪ SOS",
+        whySOSDescription:
+          "ਛੋਟੀ cancellation window ਨਾਲ ਐਮਰਜੈਂਸੀ ਰਿਸਪਾਂਸ ਸ਼ੁਰੂ ਕਰੋ।",
+        whyLocation:
+          "ਟਿਕਾਣਾ ਤਿਆਰ",
+        whyLocationDescription:
+          "ਨਵੀਨਤਮ ਉਪਲਬਧ ਟਿਕਾਣਾ ਪ੍ਰਾਪਤ ਕਰੋ ਅਤੇ ਸਿੱਧਾ Maps ਵਿੱਚ ਖੋਲ੍ਹੋ।",
+        whyNetwork:
+          "ਭਰੋਸੇਯੋਗ ਨੈੱਟਵਰਕ",
+        whyNetworkDescription:
+          "ਮਹੱਤਵਪੂਰਨ ਸੰਪਰਕ ਸੇਵ ਕਰੋ ਅਤੇ ਜਲਦੀ ਕਾਲ ਜਾਂ ਅਲਰਟ ਮੈਸੇਜ ਤਿਆਰ ਕਰੋ।",
+        whyNearby:
+          "ਨੇੜਲੀ ਮਦਦ",
+        whyNearbyDescription:
+          "ਨੇੜਲੇ ਪੁਲਿਸ ਸਟੇਸ਼ਨ ਅਤੇ ਹਸਪਤਾਲ ਜਲਦੀ ਲੱਭੋ.",
+        whyStrip:
+          "ਉਸ ਸਮੇਂ ਲਈ ਬਣਾਇਆ ਗਿਆ ਹੈ ਜਦੋਂ ਹਰ ਸਕਿੰਟ ਮਹੱਤਵਪੂਰਨ ਹੁੰਦਾ ਹੈ।<br><br>SOS → ਟਿਕਾਣਾ → ਸੰਪਰਕ → ਮਦਦ",
+
+        historyTitle:
+          "ਐਮਰਜੈਂਸੀ ਗਤੀਵਿਧੀ",
+        historySubtitle:
+          "SafeHer ਵਿੱਚ ਕੀਤੀਆਂ ਹਾਲੀਆ ਕਾਰਵਾਈਆਂ।",
+        clearActivity:
+          "ਗਤੀਵਿਧੀ ਸਾਫ਼ ਕਰੋ",
+
+        safetyTitle:
+          "ਸੁਰੱਖਿਆ ਸੁਝਾਅ",
+        safetySubtitle:
+          "ਸਧਾਰਨ ਆਦਤਾਂ ਐਮਰਜੈਂਸੀ ਸਥਿਤੀਆਂ ਨੂੰ ਸੰਭਾਲਣ ਵਿੱਚ ਮਦਦ ਕਰ ਸਕਦੀਆਂ ਹਨ।",
+
+        tip1Title:
+          "01 — ਸੁਚੇਤ ਰਹੋ",
+        tip1Text:
+          "ਖਾਸ ਕਰਕੇ ਇਕੱਲੇ ਯਾਤਰਾ ਕਰਦੇ ਸਮੇਂ ਆਪਣੇ ਆਲੇ-ਦੁਆਲੇ ਧਿਆਨ ਰੱਖੋ।",
+
+        tip2Title:
+          "02 — ਸੰਪਰਕ ਤਿਆਰ ਰੱਖੋ",
+        tip2Text:
+          "ਐਮਰਜੈਂਸੀ ਤੋਂ ਪਹਿਲਾਂ ਭਰੋਸੇਯੋਗ ਲੋਕਾਂ ਨੂੰ ਸੰਪਰਕਾਂ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ।",
+
+        tip3Title:
+          "03 — ਟਿਕਾਣਾ ਧਿਆਨ ਨਾਲ ਸਾਂਝਾ ਕਰੋ",
+        tip3Text:
+          "ਆਪਣਾ ਟਿਕਾਣਾ ਸਿਰਫ਼ ਭਰੋਸੇਯੋਗ ਲੋਕਾਂ ਜਾਂ ਐਮਰਜੈਂਸੀ ਸੇਵਾਵਾਂ ਨਾਲ ਸਾਂਝਾ ਕਰੋ।",
+
+        tip4Title:
+          "04 — ਐਮਰਜੈਂਸੀ ਨੰਬਰ ਜਾਣੋ",
+        tip4Text:
+          "ਭਾਰਤ ਦਾ ਐਮਰਜੈਂਸੀ ਰਿਸਪਾਂਸ ਨੰਬਰ 112 ਹੈ।",
+
+        footerText:
+          "— ਮਹਿਲਾ ਸੁਰੱਖਿਆ ਪਲੇਟਫਾਰਮ",
+        footerPrototype:
+          "ਇਨੋਵੇਸ਼ਨ ਅਤੇ ਹੈਕਾਥਨ ਡੈਮੋ ਲਈ ਬਣਾਇਆ ਗਿਆ ਪ੍ਰੋਟੋਟਾਈਪ।"
+      }
+
+    };
+
+
+    /* =====================================================
+       CHANGE LANGUAGE
+    ===================================================== */
+
+    function changeLanguage(language) {
+
+      const selected =
+        translations[language] || translations.en;
+
+      localStorage.setItem(
+        "safeHerLanguage",
+        language
+      );
+
+      document.documentElement.lang =
+        language;
+
+
+      document
+        .querySelectorAll("[data-i18n]")
+        .forEach(element => {
+
+          const key =
+            element.getAttribute("data-i18n");
+
+          if (selected[key]) {
+
+            element.innerHTML =
+              selected[key];
+
+          }
+
+        });
+
+
+      document
+        .querySelectorAll("[data-placeholder]")
+        .forEach(element => {
+
+          const key =
+            element.getAttribute("data-placeholder");
+
+          if (selected[key]) {
+
+            element.placeholder =
+              selected[key];
+
+          }
+
+        });
+
+
+      displayContacts();
+      displayAlertContacts();
+      displayHistory();
+      updateAlertPreview();
+
+    }
+
+
+    /* =====================================================
+       GLOBAL DATA
+    ===================================================== */
+
+    let currentLatitude = null;
+    let currentLongitude = null;
+    let sosTimer = null;
+    let sosActive = false;
+
+    let contacts =
+      JSON.parse(
+        localStorage.getItem("safeHerContacts")
+      ) || [];
+
+    let history =
+      JSON.parse(
+        localStorage.getItem("safeHerHistory")
+      ) || [];
+
+
+    /* =====================================================
+       HISTORY
+    ===================================================== */
+
+    function addHistory(action) {
+
+      const time =
+        new Date().toLocaleString();
+
+      history.unshift({
+        action: action,
+        time: time
+      });
+
+      history =
+        history.slice(0, 10);
+
+      localStorage.setItem(
+        "safeHerHistory",
+        JSON.stringify(history)
+      );
+
+      displayHistory();
+      updateDashboard();
+    }
+
+
+    function displayHistory() {
+
+      const container =
+        document.getElementById("historyList");
+
+      if (history.length === 0) {
+
+        container.innerHTML =
+          getText("noActivity", "No activity yet.");
+
+        return;
+      }
+
+      container.innerHTML =
+        history.map(item => {
+
+          return `
+            <div class="history-item">
+              <span>${escapeHTML(item.action)}</span>
+              <span class="history-time">
+                ${escapeHTML(item.time)}
+              </span>
+            </div>
+          `;
+
+        }).join("");
+    }
+
+
+    function clearHistory() {
+
+      history = [];
+
+      localStorage.setItem(
+        "safeHerHistory",
+        JSON.stringify(history)
+      );
+
+      displayHistory();
+      updateDashboard();
+    }
+
+
+    /* =====================================================
+       DASHBOARD
+    ===================================================== */
+
+    function updateDashboard() {
+
+      document.getElementById("dashboardContacts")
+        .innerText = contacts.length;
+
+      document.getElementById("dashboardLocation")
+        .innerText =
+        currentLatitude !== null
+          ? getText("on", "ON")
+          : getText("off", "OFF");
+
+      document.getElementById("dashboardSOS")
+        .innerText =
+        sosActive
+          ? getText("active", "ACTIVE")
+          : getText("ready", "READY");
+
+      document.getElementById("dashboardActivity")
+        .innerText =
+        history.length > 0
+          ? getText("recent", "RECENT")
+          : "—";
+    }
+
+
+    /* =====================================================
+       SOS
+    ===================================================== */
+
+    function startSOS() {
+
+      if (sosActive) {
+        return;
+      }
+
+      sosActive = true;
+
+      updateDashboard();
+
+      addHistory(
+        getText(
+          "sosActivated",
+          "SOS activated"
+        )
+      );
+
+      let seconds = 5;
+
+      const button =
+        document.querySelector(".sos-button");
+
+      button.innerText =
+        seconds;
+
+      sosTimer =
+        setInterval(() => {
+
+          seconds--;
+
+          button.innerText =
+            seconds;
+
+          if (seconds <= 0) {
+
+            clearInterval(sosTimer);
+
+            button.innerText =
+              "SOS";
+
+            activateSOS();
+
+          }
+
+        }, 1000);
+    }
+
+
+    function activateSOS() {
+
+      showAlertCenter();
+
+      getLocation();
+
+      addHistory(
+        getText(
+          "alertCenterActivated",
+          "Emergency Alert Center activated"
+        )
+      );
+    }
+
+
+    function cancelSOS() {
+
+      if (!sosActive) {
+        return;
+      }
+
+      clearInterval(sosTimer);
+
+      sosActive = false;
+
+      document.querySelector(".sos-button")
+        .innerText = "SOS";
+
+      document.getElementById("alertCenter")
+        .style.display = "none";
+
+      updateDashboard();
+
+      addHistory(
+        getText(
+          "sosCancelled",
+          "SOS cancelled"
+        )
+      );
+
+      alert(
+        getText(
+          "sosCancelledMessage",
+          "SOS cancelled successfully."
+        )
+      );
+    }
+
+
+    function showAlertCenter() {
+
+      const center =
+        document.getElementById("alertCenter");
+
+      center.style.display =
+        "block";
+
+      center.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+      updateAlertPreview();
+      displayAlertContacts();
+    }
+
+
+    /* =====================================================
+       CONTACTS
+    ===================================================== */
+
+    function addContact() {
+
+      const name =
+        document.getElementById("contactName")
+          .value.trim();
+
+      const phone =
+        document.getElementById("contactPhone")
+          .value.trim();
+
+      if (!name || !phone) {
+
+        alert(
+          getText(
+            "enterContact",
+            "Please enter both name and phone number."
+          )
+        );
+
+        return;
+      }
+
+      const contact = {
+
+        id: Date.now(),
+
+        name: name,
+
+        phone: phone,
+
+        primary:
+          contacts.length === 0
+
+      };
+
+      contacts.push(contact);
+
+      localStorage.setItem(
+        "safeHerContacts",
+        JSON.stringify(contacts)
+      );
+
+      document.getElementById("contactName")
+        .value = "";
+
+      document.getElementById("contactPhone")
+        .value = "";
+
+      displayContacts();
+      displayAlertContacts();
+      updateAlertPreview();
+      updateDashboard();
+
+      addHistory(
+        getText(
+          "contactAdded",
+          "Trusted contact added"
+        ) + ": " + name
+      );
+    }
+
+
+    function displayContacts() {
+
+      const container =
+        document.getElementById("contactList");
+
+      if (contacts.length === 0) {
+
+        container.innerHTML = `
+          <div class="card">
+            <p>
+              ${getText(
+                "noContacts",
+                "No trusted contacts added yet."
+              )}
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+
+      container.innerHTML =
+        contacts.map(contact => {
+
+          return `
+            <div class="contact-item">
+
+              <div class="contact-info">
+
+                <strong>
+                  ${escapeHTML(contact.name)}
+                </strong>
+
+                <small>
+                  ${escapeHTML(contact.phone)}
+                </small>
+
+                ${
+                  contact.primary
+                  ? `<span class="primary-badge">
+                       ${getText(
+                         "primaryContact",
+                         "PRIMARY CONTACT"
+                       )}
+                     </span>`
+                  : ""
+                }
+
+              </div>
+
+              <div class="contact-actions">
+
+                <button
+                  class="call-btn"
+                  onclick="callContact('${escapeJS(contact.phone)}')"
+                >
+                  📞 ${getText("call", "Call")}
+                </button>
+
+                <button
+                  class="alert-btn"
+                  onclick="sendWhatsApp('${escapeJS(contact.phone)}')"
+                >
+                  💬 ${getText("alert", "Alert")}
+                </button>
+
+                ${
+                  !contact.primary
+                  ? `
+                    <button
+                      class="alert-btn"
+                      onclick="makePrimary(${contact.id})"
+                    >
+                      ⭐ ${getText(
+                        "primary",
+                        "Primary"
+                      )}
+                    </button>
+                  `
+                  : ""
+                }
+
+                <button
+                  class="delete-btn"
+                  onclick="deleteContact(${contact.id})"
+                >
+                  ${getText("delete", "Delete")}
+                </button>
+
+              </div>
+
+            </div>
+          `;
+
+        }).join("");
+    }
+
+
+    function callContact(phone) {
+
+      addHistory(
+        getText(
+          "calledContact",
+          "Called trusted contact"
+        )
+      );
+
+      window.location.href =
+        "tel:" + phone;
+    }
+
+
+    function sendWhatsApp(phone) {
+
+      let cleanNumber =
+        phone.replace(/\D/g, "");
+
+      if (cleanNumber.length === 10) {
+        cleanNumber =
+          "91" + cleanNumber;
+      }
+
+
+      let locationText =
+        currentLatitude !== null
+          ? `Location: https://www.google.com/maps/search/?api=1&query=${currentLatitude},${currentLongitude}`
+          : "Location is currently unavailable.";
+
+
+      const message =
+`🚨 SAFEHER EMERGENCY ALERT
+
+I may need immediate help.
+
+${locationText}
+
+Please contact me as soon as possible.`;
+
+
+      const url =
+        "https://wa.me/" +
+        cleanNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+      addHistory(
+        getText(
+          "whatsappPrepared",
+          "Emergency alert prepared for WhatsApp"
+        )
+      );
+
+      window.open(
+        url,
+        "_blank"
+      );
+    }
+
+
+    function deleteContact(id) {
+
+      const contact =
+        contacts.find(
+          c => c.id === id
+        );
+
+      contacts =
+        contacts.filter(
+          c => c.id !== id
+        );
+
+      if (
+        contact &&
+        contact.primary &&
+        contacts.length > 0
+      ) {
+        contacts[0].primary =
+          true;
+      }
+
+      localStorage.setItem(
+        "safeHerContacts",
+        JSON.stringify(contacts)
+      );
+
+      displayContacts();
+      displayAlertContacts();
+      updateAlertPreview();
+      updateDashboard();
+
+      addHistory(
+        getText(
+          "contactRemoved",
+          "Trusted contact removed"
+        )
+      );
+    }
+
+
+    function makePrimary(id) {
+
+      contacts.forEach(contact => {
+
+        contact.primary =
+          contact.id === id;
+
+      });
+
+      localStorage.setItem(
+        "safeHerContacts",
+        JSON.stringify(contacts)
+      );
+
+      displayContacts();
+      displayAlertContacts();
+      updateAlertPreview();
+
+      addHistory(
+        getText(
+          "primaryChanged",
+          "Primary trusted contact changed"
+        )
+      );
+    }
+
+
+    /* =====================================================
+       ALERT PREVIEW
+    ===================================================== */
+
+    function updateAlertPreview() {
+
+      const locationElement =
+        document.getElementById(
+          "previewLocation"
+        );
+
+      const contactElement =
+        document.getElementById(
+          "previewContact"
+        );
+
+      const timeElement =
+        document.getElementById(
+          "previewTime"
+        );
+
+
+      if (currentLatitude !== null) {
+
+        locationElement.innerHTML =
+          `${currentLatitude.toFixed(6)}, ${currentLongitude.toFixed(6)}`;
+
+      } else {
+
+        locationElement.innerText =
+          getText(
+            "waitingLocation",
+            "Waiting for location..."
+          );
+      }
+
+
+      const primary =
+        contacts.find(
+          contact => contact.primary
+        );
+
+
+      if (primary) {
+
+        contactElement.innerText =
+          primary.name +
+          " (" +
+          primary.phone +
+          ")";
+
+      } else {
+
+        contactElement.innerText =
+          getText(
+            "noPrimary",
+            "No primary contact added."
+          );
+      }
+
+
+      timeElement.innerText =
+        new Date().toLocaleTimeString();
+    }
+
+
+    function displayAlertContacts() {
+
+      const container =
+        document.getElementById(
+          "alertContacts"
+        );
+
+      if (!container) {
+        return;
+      }
+
+
+      if (contacts.length === 0) {
+
+        container.innerHTML = `
+          <div style="
+            background:#fff7fa;
+            padding:18px;
+            border-radius:12px;
+            color:#777;
+          ">
+            ${getText(
+              "noContactsAlert",
+              "No trusted contacts added. Add a contact first to send an emergency alert."
+            )}
+          </div>
+        `;
+
+        return;
+      }
+
+
+      container.innerHTML =
+        contacts.map(contact => {
+
+          return `
+            <div class="alert-contact">
+
+              <div class="alert-contact-info">
+
+                <strong>
+                  ${escapeHTML(contact.name)}
+                </strong>
+
+                <small>
+                  ${escapeHTML(contact.phone)}
+                  ${
+                    contact.primary
+                    ? " • " +
+                      getText(
+                        "primary",
+                        "Primary"
+                      )
+                    : ""
+                  }
+                </small>
+
+              </div>
+
+
+              <div class="alert-buttons">
+
+                <button
+                  class="call-btn"
+                  onclick="callContact('${escapeJS(contact.phone)}')"
+                >
+                  📞 ${getText(
+                    "call",
+                    "Call"
+                  )}
+                </button>
+
+                <button
+                  class="alert-btn"
+                  onclick="sendWhatsApp('${escapeJS(contact.phone)}')"
+                >
+                  💬 ${getText(
+                    "sendAlert",
+                    "Send Alert"
+                  )}
+                </button>
+
+              </div>
+
+            </div>
+          `;
+
+        }).join("");
+    }
+
+
+    /* =====================================================
+       LOCATION
+    ===================================================== */
+
+    function getLocation() {
+
+      const status =
+        document.getElementById(
+          "locationStatus"
+        );
+
+      status.innerText =
+        getText(
+          "requestingLocation",
+          "Requesting your current location..."
+        );
+
+
+      if (!navigator.geolocation) {
+
+        status.innerText =
+          getText(
+            "geoNotSupported",
+            "Geolocation is not supported by this browser."
+          );
+
+        return;
+      }
+
+
+      navigator.geolocation.getCurrentPosition(
+        showLocation,
+        locationError,
+        {
+          enableHighAccuracy: true,
+          maximumAge: 0,
+          timeout: 15000
+        }
+      );
+    }
+
+
+    function showLocation(position) {
+
+      currentLatitude =
+        position.coords.latitude;
+
+      currentLongitude =
+        position.coords.longitude;
+
+
+      document.getElementById("latitude")
+        .innerText =
+        currentLatitude.toFixed(6);
+
+      document.getElementById("longitude")
+        .innerText =
+        currentLongitude.toFixed(6);
+
+      document.getElementById("accuracy")
+        .innerText =
+        Math.round(
+          position.coords.accuracy
+        ) + " meters";
+
+
+      document.getElementById(
+        "locationStatus"
+      ).innerText =
+        getText(
+          "locationDetected",
+          "Location successfully detected."
+        );
+
+
+      updateAlertPreview();
+      updateDashboard();
+
+      addHistory(
+        getText(
+          "locationDetectedHistory",
+          "Current location detected"
+        )
+      );
+    }
+
+
+    function locationError(error) {
+
+      const status =
+        document.getElementById(
+          "locationStatus"
+        );
+
+
+      if (error.code === 1) {
+
+        status.innerText =
+          getText(
+            "locationDenied",
+            "Location permission was denied."
+          );
+
+      } else if (error.code === 2) {
+
+        status.innerText =
+          getText(
+            "locationUnavailable",
+            "Location information is unavailable."
+          );
+
+      } else if (error.code === 3) {
+
+        status.innerText =
+          getText(
+            "locationTimeout",
+            "Location request timed out."
+          );
+
+      } else {
+
+        status.innerText =
+          getText(
+            "locationFailed",
+            "Unable to get current location."
+          );
+      }
+
+      updateAlertPreview();
+    }
+
+
+    function openCurrentMap() {
+
+      if (
+        currentLatitude === null ||
+        currentLongitude === null
+      ) {
+
+        alert(
+          getText(
+            "getLocationFirst",
+            "Please get your current location first."
+          )
+        );
+
+        return;
+      }
+
+
+      const url =
+        `https://www.google.com/maps/search/?api=1&query=${currentLatitude},${currentLongitude}`;
+
+
+      addHistory(
+        getText(
+          "mapsOpened",
+          "Current location opened in Maps"
+        )
+      );
+
+
+      window.open(
+        url,
+        "_blank"
+      );
+    }
+
+
+    /* =====================================================
+       NEARBY HELP
+    ===================================================== */
+
+    function findNearby(type) {
+
+      let search = "";
+
+      if (type === "police") {
+        search = "police station near me";
+      }
+
+      if (type === "hospital") {
+        search = "hospital near me";
+      }
+
+
+      const url =
+        "https://www.google.com/maps/search/" +
+        encodeURIComponent(search);
+
+
+      addHistory(
+        getText(
+          "nearbySearch",
+          "Nearby"
+        ) + " " + type + " " +
+        getText(
+          "searchOpened",
+          "search opened"
+        )
+      );
+
+
+      window.open(
+        url,
+        "_blank"
+      );
+    }
+
+
+    /* =====================================================
+       EMERGENCY NUMBER
+    ===================================================== */
+
+    function callNumber(number) {
+
+      addHistory(
+        getText(
+          "emergencySelected",
+          "Emergency number"
+        ) +
+        " " +
+        number +
+        " " +
+        getText(
+          "selected",
+          "selected"
+        )
+      );
+
+      window.location.href =
+        "tel:" + number;
+    }
+
+
+    /* =====================================================
+       TEXT HELPER
+    ===================================================== */
+
+    function getText(key, fallback) {
+
+      const language =
+        localStorage.getItem(
+          "safeHerLanguage"
+        ) || "en";
+
+      const selected =
+        translations[language] ||
+        translations.en;
+
+      return selected[key] ||
+             translations.en[key] ||
+             fallback;
+    }
+
+
+    /* =====================================================
+       SECURITY HELPERS
+    ===================================================== */
+
+    function escapeHTML(value) {
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    function escapeJS(value) {
+
+      return String(value)
+        .replace(/\\/g, "\\\\")
+        .replace(/'/g, "\\'");
+    }
+
+
+    /* =====================================================
+       EXTRA TRANSLATION STRINGS
+    ===================================================== */
+
+    Object.assign(translations.en, {
+
+      noActivity:
+        "No activity yet.",
+      on:
+        "ON",
+      off:
+        "OFF",
+      active:
+        "ACTIVE",
+      ready:
+        "READY",
+      recent:
+        "RECENT",
+      sosActivated:
+        "SOS activated",
+      alertCenterActivated:
+        "Emergency Alert Center activated",
+      sosCancelled:
+        "SOS cancelled",
+      sosCancelledMessage:
+        "SOS cancelled successfully.",
+      enterContact:
+        "Please enter both name and phone number.",
+      contactAdded:
+        "Trusted contact added",
+      noContacts:
+        "No trusted contacts added yet.",
+      primaryContact:
+        "PRIMARY CONTACT",
+      call:
+        "Call",
+      alert:
+        "Alert",
+      primary:
+        "Primary",
+      delete:
+        "Delete",
+      calledContact:
+        "Called trusted contact",
+      whatsappPrepared:
+        "Emergency alert prepared for WhatsApp",
+      contactRemoved:
+        "Trusted contact removed",
+      primaryChanged:
+        "Primary trusted contact changed",
+      waitingLocation:
+        "Waiting for location...",
+      noPrimary:
+        "No primary contact added.",
+      noContactsAlert:
+        "No trusted contacts added. Add a contact first to send an emergency alert.",
+      sendAlert:
+        "Send Alert",
+      requestingLocation:
+        "Requesting your current location...",
+      geoNotSupported:
+        "Geolocation is not supported by this browser.",
+      locationDetected:
+        "Location successfully detected.",
+      locationDetectedHistory:
+        "Current location detected",
+      locationDenied:
+        "Location permission was denied.",
+      locationUnavailable:
+        "Location information is unavailable.",
+      locationTimeout:
+        "Location request timed out.",
+      locationFailed:
+        "Unable to get current location.",
+      getLocationFirst:
+        "Please get your current location first.",
+      mapsOpened:
+        "Current location opened in Maps",
+      nearbySearch:
+        "Nearby",
+      searchOpened:
+        "search opened",
+      emergencySelected:
+        "Emergency number",
+      selected:
+        "selected"
+    });
+
+
+    Object.assign(translations.hi, {
+
+      noActivity:
+        "अभी कोई गतिविधि नहीं है।",
+      on:
+        "चालू",
+      off:
+        "बंद",
+      active:
+        "सक्रिय",
+      ready:
+        "तैयार",
+      recent:
+        "हाल की",
+      sosActivated:
+        "SOS सक्रिय किया गया",
+      alertCenterActivated:
+        "आपातकालीन अलर्ट सेंटर सक्रिय किया गया",
+      sosCancelled:
+        "SOS रद्द किया गया",
+      sosCancelledMessage:
+        "SOS सफलतापूर्वक रद्द किया गया।",
+      enterContact:
+        "कृपया नाम और फोन नंबर दोनों दर्ज करें।",
+      contactAdded:
+        "विश्वसनीय संपर्क जोड़ा गया",
+      noContacts:
+        "अभी कोई विश्वसनीय संपर्क नहीं जोड़ा गया है।",
+      primaryContact:
+        "प्राथमिक संपर्क",
+      call:
+        "कॉल",
+      alert:
+        "अलर्ट",
+      primary:
+        "प्राथमिक",
+      delete:
+        "हटाएं",
+      calledContact:
+        "विश्वसनीय संपर्क को कॉल किया गया",
+      whatsappPrepared:
+        "WhatsApp के लिए आपातकालीन अलर्ट तैयार किया गया",
+      contactRemoved:
+        "विश्वसनीय संपर्क हटाया गया",
+      primaryChanged:
+        "प्राथमिक विश्वसनीय संपर्क बदला गया",
+      waitingLocation:
+        "लोकेशन की प्रतीक्षा...",
+      noPrimary:
+        "कोई प्राथमिक संपर्क नहीं जोड़ा गया।",
+      noContactsAlert:
+        "कोई विश्वसनीय संपर्क नहीं है। आपातकालीन अलर्ट भेजने के लिए पहले संपर्क जोड़ें।",
+      sendAlert:
+        "अलर्ट भेजें",
+      requestingLocation:
+        "आपका वर्तमान स्थान प्राप्त किया जा रहा है...",
+      geoNotSupported:
+        "यह ब्राउज़र जियोलोकेशन को सपोर्ट नहीं करता।",
+      locationDetected:
+        "स्थान सफलतापूर्वक प्राप्त हुआ।",
+      locationDetectedHistory:
+        "वर्तमान स्थान प्राप्त किया गया",
+      locationDenied:
+        "स्थान की अनुमति अस्वीकार कर दी गई।",
+      locationUnavailable:
+        "स्थान की जानकारी उपलब्ध नहीं है।",
+      locationTimeout:
+        "स्थान अनुरोध का समय समाप्त हो गया।",
+      locationFailed:
+        "वर्तमान स्थान प्राप्त नहीं किया जा सका।",
+      getLocationFirst:
+        "कृपया पहले अपना वर्तमान स्थान प्राप्त करें।",
+      mapsOpened:
+        "वर्तमान स्थान Maps में खोला गया",
+      nearbySearch:
+        "नजदीकी",
+      searchOpened:
+        "सर्च खोला गया",
+      emergencySelected:
+        "आपातकालीन नंबर",
+      selected:
+        "चुना गया"
+    });
+
+
+    /* =====================================================
+       INITIAL LOAD
+    ===================================================== */
+
+    const savedLanguage =
+      localStorage.getItem(
+        "safeHerLanguage"
+      ) || "en";
+
+    document.getElementById(
+      "languageSelect"
+    ).value =
+      savedLanguage;
+
+    changeLanguage(
+      savedLanguage
+    );
+
+    displayContacts();
+    displayHistory();
+    displayAlertContacts();
+    updateAlertPreview();
+    updateDashboard();
+
+  </script>
+
+</body>
+</html>

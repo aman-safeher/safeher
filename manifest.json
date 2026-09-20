@@ -1,0 +1,17 @@
+{
+  "name": "SafeHer - Women's Safety",
+  "short_name": "SafeHer",
+  "description": "A women's safety platform for emergency assistance, trusted contacts and location support.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fff7fa",
+  "theme_color": "#d4145a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
