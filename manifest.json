@@ -1,11 +1,11 @@
 {
-  "name": "SafeHer - Women's Safety",
-  "short_name": "SafeHer",
-  "description": "A women's safety platform for emergency assistance, trusted contacts and location support.",
+  "name": "CivicShield - Public Safety & Emergency Response",
+  "short_name": "CivicShield",
+  "description": "A public safety platform for emergency assistance, trusted contacts, location support and nearby help.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fff7fa",
-  "theme_color": "#d4145a",
+  "background_color": "#f4f7fb",
+  "theme_color": "#123a63",
   "orientation": "portrait",
   "icons": [
     {
