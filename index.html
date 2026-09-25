@@ -2106,6 +2106,14 @@ Please contact me as soon as possible.`;
 
 
   </script>
-
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js")
+      .then(() => console.log("CivicShield offline mode ready"))
+      .catch(error => console.error("Service Worker error:", error));
+  });
+}
+</script>
 </body>
 </html>
